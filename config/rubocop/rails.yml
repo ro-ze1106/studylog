@@ -1,0 +1,30 @@
+Rails:
+  Enabled: true
+
+Rails/Delegate:
+  Enabled: false
+
+Rails/Exit:
+  Enabled: false
+
+Rails/FilePath:
+  Enabled: false
+
+Rails/PluralizationGrammar:
+  Enabled: false
+
+Rails/Present:
+  Enabled: false
+
+Rails/SafeNavigation:
+  ConvertTry: true
+
+Rails/SaveBang:
+  Enabled: true
+
+Rails/UnknownEnv:
+  Environments:
+    - development # rubocop default.yml
+    - test # rubocop default.yml
+    - production # rubocop default.yml
+    - staging
