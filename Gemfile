@@ -34,6 +34,7 @@ group :development do
   gem 'rubocop', require: false
   gem 'rubocop-rails', require: false
   gem 'spring'
+  gem 'spring-commands-rspec'
   gem 'web-console', '>= 4.1.0'
 end
 
