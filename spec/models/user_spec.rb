@@ -43,5 +43,17 @@ RSpec.describe User, type: :model do
       user = create(:user, email: email)
       expect(user.email).to eq email.downcase
     end
+
+    it 'パスワードがなければ無効な状態であること' do
+    user = build(:user, password: nil, password_confirmation: nil) 
+    user.valid?
+    expect(user.errors[:password]).to include
+    end
+
+    it 'パスワードが6文字以上であること' do
+    user = build(:user, password: 'a'*6, password_confirmation: 'a'*6)
+    user.valid?
+    expect(user).to be_valid
+    end
   end
 end
