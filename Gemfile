@@ -48,3 +48,6 @@ end
 
 gem 'devise'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
+
+# Internationalization
+gem 'rails-i18n'
