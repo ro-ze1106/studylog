@@ -10,22 +10,22 @@ RSpec.describe 'ユーザー登録', type: :request do
     expect(response).to have_http_status '200'
   end
 
-  it "無効なユーザーで登録" do
+  it '無効なユーザーで登録' do
     expect {
-      post users_path, params: { user: { name: "",
-                                         email: "user@example.com",
-                                         password: "password",
-                                         password_confirmation: "pass" } }
+      post users_path, params: { user: { name: '',
+                                         email: 'user@example.com',
+                                         password: 'password',
+                                         password_confirmation: 'pass' } }
     }.not_to change(User, :count)
   end
 
-  it "有効なユーザーで登録" do
+  it '有効なユーザーで登録' do
     expect {
-      post users_path, params: { user: { name: "User",
-                                         email: "user@example.com",
-                                         password: "password",
-                                         password_confirmation: "password"}}
-  }.to change(User, :count).by(1)
+      post users_path, params: { user: { name: 'User',
+                                         email: 'user@example.com',
+                                         password: 'password',
+                                         password_confirmation: 'password' } }
+    }.to change(User, :count).by(1)
   redirect_to @user
   end
 end
