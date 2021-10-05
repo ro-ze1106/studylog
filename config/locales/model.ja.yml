@@ -2,7 +2,7 @@ ja:
   activerecord:
     attributes:
       user:
-        name: 'ユーザ名'
+        name: 'ユーザー名'
         email: 'メールアドレス'
         password: 'パスワード'
         password_confirmation: '確認用パスワード'
