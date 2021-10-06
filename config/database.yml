@@ -25,3 +25,6 @@ production:
   adapter: postgresql
   encoding: unicode
   pool: 5
+  database: studylog_production
+  username: studylog
+  password: <%= ENV['STUDYLOG_DATABASE_PASSWORD'] %>
