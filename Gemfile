@@ -19,7 +19,6 @@ gem 'bcrypt', '3.1.16'
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'bootstrap-sass'
 gem 'rexml'
-gem 'jquery-rails'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
