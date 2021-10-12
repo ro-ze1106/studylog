@@ -1,15 +1,15 @@
 require 'rails_helper'
 
-RSpec.describe "ログイン", type: :request do
+RSpec.describe 'ログイン', type: :request do
   let!(:user) { create(:user) }
-  
+
   it '正常なレスポンスを返すこと' do
     get login_path
     expect(response).to be_successful
     expect(response).to have_http_status '200'
   end
 
-  it "有効なユーザーでログイン＆ログアウト" do
+  it '有効なユーザーでログイン＆ログアウト' do
     get login_path
     post login_path, params: { session: { email: user.email,
                                           password: user.password } }
@@ -24,11 +24,10 @@ RSpec.describe "ログイン", type: :request do
     follow_redirect!
   end
 
-  it "無効なユーザーでログイン" do
+  it '無効なユーザーでログイン' do
     get login_path
-    post login_path, params: {session: {email: "111@",
-                                        password: user.password } }
+    post login_path, params: { session: { email: '111@',
+                                          password: user.password } }
     expect(is_logged_in?).not_to be_truthy
   end
-
 end
