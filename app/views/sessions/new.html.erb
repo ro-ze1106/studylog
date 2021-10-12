@@ -6,10 +6,10 @@
     <%= form_with(url: login_path, scope: :session, local: true) do |f| %>
 
       <%= f.label 'メールアドレス' %>
-      <%= f.email_field :email, class: 'form-control' %>
+      <%= f.email_field :email, class: 'form-control', id: 'user_email'%>
 
       <%= f.label 'パスワード' %>
-      <%= f.password_field :password, class: 'form-control' %>
+      <%= f.password_field :password, class: 'form-control', id: 'user_password' %>
 
       <%= f.submit "ログインする", class: "btn btn-primary" %>
     <% end %>
