@@ -11,7 +11,6 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       log_in @user
-      remember user
       flash[:success] = 'スタディログへようこそ'
       redirect_to @user
     else
