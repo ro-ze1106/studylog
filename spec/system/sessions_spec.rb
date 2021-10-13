@@ -25,6 +25,10 @@ RSpec.describe 'Sessions', type: :system do
       expect(page).to have_content 'パスワード'
     end
 
+    it '「自動ログインにする」チェックボックスが表示されていること' do
+      expect(page).to have_content '自動ログインにする'
+    end
+
     it 'ログインボタンが正しく表示されていること' do
       expect(page).to have_button 'ログイン'
     end
