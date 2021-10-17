@@ -5,6 +5,7 @@ RSpec.describe 'users_edit', type: :system do
 
   describe 'プロフィール編集ページ' do
     before do
+      login_for_system(user)
       visit user_path(user)
       click_link 'プロフィール編集' 
     end

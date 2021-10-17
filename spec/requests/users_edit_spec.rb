@@ -1,32 +1,48 @@
 require 'rails_helper'
 
 RSpec.describe 'プロフィール編集', type: :request do
-  let!(:user) { create (:user) }
+  let!(:user) { create(:user) }
+  let!(:other_user) { create(:user) }
 
-  before do
-    get edit_user_path(user)
+  context '認可されたユーザーの場合' do
+    it 'レスポンスが正常に表示されること' do
+      login_for_request(user)
+      get edit_user_path(user)
+      expect(response).to render_template('users/edit')
+      patch user_path(user), params: { user: { name: 'name',
+                                               email: 'user@example.com' } }
+      redirect_to user
+      follow_redirect!
+      expect(response).to render_template('users/show')
+    end
   end
 
-  it '無効なプロフィール編集' do
-    expect(response).to render_template('users/edit')
-    patch user_path(user), params: {user: { name:"",
-    email: "test@example",
-    password: "tes",
-    password_confirmation: "test"
-    }}
-    expect(response).to render_template('users/edit')
+  context 'ログインしていないユーザーの場合' do
+    it 'ログイン画面にリダイレクトすること' do
+      # 編集
+      get edit_user_path(user)
+      expect(response).to have_http_status "302"
+      expect(response).to redirect_to login_path
+      # 更新
+      patch user_path(user), params: { user: { name: user.name,
+                                               email: user.email } }
+      expect(response).to have_http_status "302"
+      expect(response).to redirect_to login_path
+    end
   end
 
-  it '有効なプロフィール編集' do
-    expect(response).to render_template('users/edit')
-    patch user_path(user), params: {user: { name: "name",
-    email: "test@example.com",
-    password: "",
-    password_confirmation: ""
-    }}
-    redirect_to user
-    follow_redirect!
-    expect(response).to render_template('users/show')
+  context '別のアカウントのユーザーの場合' do
+    it 'ホーム画面にリダイレクトすること' do
+      # 編集
+      login_for_request(other_user)
+      get edit_user_path(user)
+      expect(response).to have_http_status "302"
+      expect(response).to redirect_to root_path
+      # 更新
+      patch user_path(user), params: { user: { name: user.name,
+                                               email: user.email } }
+      expect(response).to have_http_status "302"
+      expect(response).to redirect_to root_path
+    end
   end
-
 end

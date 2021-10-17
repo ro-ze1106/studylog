@@ -43,6 +43,7 @@ RSpec.describe 'Signup', type: :system do
   describe 'プロフィールページ' do
     context 'ページレイアウト' do
       before do
+        login_for_system(user)
         visit user_path(user)
       end
 
