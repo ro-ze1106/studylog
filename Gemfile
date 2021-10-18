@@ -13,6 +13,8 @@ gem 'webpacker', '~> 5.0'
 # gem 'redis', '~> 4.0'
 gem 'bcrypt', '3.1.16'
 gem 'faker'
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
