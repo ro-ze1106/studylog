@@ -12,7 +12,7 @@ gem 'webpacker', '~> 5.0'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 gem 'bcrypt', '3.1.16'
-
+gem 'faker'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
