@@ -19,13 +19,13 @@ RSpec.describe 'ユーザー一覧', type: :request do
       expect(response).to have_http_status '302'
       expect(response).to redirect_to login_url
     end
-  
+
     it 'admin属性の変更が禁止されていること' do
       login_for_request(user)
       expect(user.admin).to be_falsey
       patch user_path(user), params: { user: { password: user.password,
-                                      password_confirmation: user.password,
-                                      admin: true } }
+                                               password_confirmation: user.password,
+                                               admin: true } }
       expect(user.reload.admin).to be_falsey
     end
   end

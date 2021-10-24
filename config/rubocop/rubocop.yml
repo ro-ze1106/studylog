@@ -30,6 +30,9 @@ Style/MixinUsage:
 Style/MutableConstant:
   Enabled: false
 
+Style/AsciiComments:
+  Enabled: false
+
 Layout/FirstHashElementLineBreak:
   Enabled: false
 

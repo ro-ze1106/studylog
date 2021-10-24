@@ -18,8 +18,8 @@ RSpec.describe '自動ログイン', type: :request do
     end
   end
 
-  context "「ログインしたままにする」にチェックを入れずにログインする場合" do
-    it "remember_tokenが空であることを確認" do
+  context '「ログインしたままにする」にチェックを入れずにログインする場合' do
+    it 'remember_tokenが空であることを確認' do
       # クッキーを保存してログイン
       login_remember(user)
       delete logout_path
@@ -36,12 +36,12 @@ RSpec.describe '自動ログイン', type: :request do
       login_for_request(user)
       expect(response).to redirect_to user_path(user)
 
-      #ログアウトする場合
+      # ログアウトする場合
       delete logout_path
       expect(response).to redirect_to root_path
       expect(session[:user_id]).to eq nil
 
-      #2番目のウィンドウでログアウトする場合
+      # 2番目のウィンドウでログアウトする場合
       delete logout_path
       expect(response).to redirect_to root_path
       expect(session[:user_id]).to eq nil

@@ -11,9 +11,9 @@ end
 
 def login_for_system(user)
   visit login_path
-  fill_in "user_email",    with: user.email
-  fill_in "user_password", with: user.password
-  click_button "ログインする"
+  fill_in 'user_email',    with: user.email
+  fill_in 'user_password', with: user.password
+  click_button 'ログインする'
 end
 
 def login_remember(user)
@@ -27,7 +27,7 @@ def current_user
     User.find_by(id: user_id)
   elsif (user_id = cookies.signed[:user_id])
     user = User.find_by(id: user_id)
-    if user && user.authenticated?(cookies[:remember_token])
+    if user&.authenticated?(cookies[:remember_token])
       login_for_request user
       user
     end

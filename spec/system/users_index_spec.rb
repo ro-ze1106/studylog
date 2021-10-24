@@ -13,7 +13,7 @@ RSpec.describe 'users_index', type: :system do
         expect(page).to have_css 'div.pagination'
         User.paginate(page: 1).each do |u|
           expect(page).to have_link u.name, href: user_path(u)
-          expect(page).to have_content "#{u.name} | 削除"  unless u == admin_user
+          expect(page).to have_content "#{u.name} | 削除" unless u == admin_user
         end
       end
     end
@@ -41,7 +41,7 @@ RSpec.describe 'users_index', type: :system do
         login_for_system(user)
         visit users_path
         page.accept_confirm do
-          click_link "削除する"
+          click_link '削除する'
         end
         expect(page).to have_content '自分のアカウントを削除しました'
       end

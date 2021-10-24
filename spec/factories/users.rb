@@ -6,7 +6,7 @@ FactoryBot.define do
     password_confirmation { 'foobar' }
 
     trait :admin do
-     admin {true}
+     admin { true }
     end
   end
 end

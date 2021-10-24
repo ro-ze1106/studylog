@@ -21,12 +21,12 @@ RSpec.describe 'プロフィール編集', type: :request do
     it 'ログイン画面にリダイレクトすること' do
       # 編集
       get edit_user_path(user)
-      expect(response).to have_http_status "302"
+      expect(response).to have_http_status '302'
       expect(response).to redirect_to login_path
       # 更新
       patch user_path(user), params: { user: { name: user.name,
                                                email: user.email } }
-      expect(response).to have_http_status "302"
+      expect(response).to have_http_status '302'
       expect(response).to redirect_to login_path
     end
   end
@@ -36,12 +36,12 @@ RSpec.describe 'プロフィール編集', type: :request do
       # 編集
       login_for_request(other_user)
       get edit_user_path(user)
-      expect(response).to have_http_status "302"
+      expect(response).to have_http_status '302'
       expect(response).to redirect_to root_path
       # 更新
       patch user_path(user), params: { user: { name: user.name,
                                                email: user.email } }
-      expect(response).to have_http_status "302"
+      expect(response).to have_http_status '302'
       expect(response).to redirect_to root_path
     end
   end

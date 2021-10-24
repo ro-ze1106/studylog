@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
-  before_action :correct_user,   only: [:edit, :update]
+  before_action :logged_in_user, only: %i[index edit update destroy]
+  before_action :correct_user,   only: %i[edit update]
 
   def index
     @users = User.paginate(page: params[:page])
@@ -32,7 +32,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      flash[:success] = "プロフィールの編集が完了しました。"
+      flash[:success] = 'プロフィールの編集が完了しました。'
       redirect_to @user
     else
       render 'edit'
@@ -44,15 +44,15 @@ class UsersController < ApplicationController
     # 管理者ユーザーの場合
     if current_user.admin?
       @user.destroy
-      flash[:success] = "ユーザーの削除に成功しました"
+      flash[:success] = 'ユーザーの削除に成功しました'
       redirect_to users_url
     # 管理者ユーザーではないが、自分のアカウントの場合
     elsif current_user?(@user)
       @user.destroy
-      flash[:success] = "自分のアカウントを削除しました"
+      flash[:success] = '自分のアカウントを削除しました'
       redirect_to root_url
     else
-      flash[:danger] = "他人のアカウントは削除できません"
+      flash[:danger] = '他人のアカウントは削除できません'
       redirect_to root_url
     end
   end
@@ -64,13 +64,13 @@ class UsersController < ApplicationController
                                  :password_confirmation)
   end
 
-  # beforeアクション
+    # beforeアクション
 
     # ログイン済みユーザーかどうか確認
     def logged_in_user
       unless logged_in?
         store_location
-        flash[:danger] = "ログインしてください"
+        flash[:danger] = 'ログインしてください'
         redirect_to login_url
       end
     end
