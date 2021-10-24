@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Signup', type: :system do
+RSpec.describe 'user', type: :system do
   let!(:user) { create(:user) }
 
   describe 'ユーザー登録ページ' do
@@ -57,6 +57,10 @@ RSpec.describe 'Signup', type: :system do
 
       it 'ユーザー情報が表示されること' do
         expect(page).to have_content user.name
+      end
+
+      it 'プロフィール編集ページのリンクが表示されていること' do
+        expect(page).to have_link 'プロフィール編集', href: edit_user_path(user)
       end
     end
   end
