@@ -8,3 +8,11 @@ ja:
         password_confirmation: '確認用パスワード'
         created_at: 登録日時
         updated_at: 更新日時
+      problem:
+        study_type: '科目'
+        problem_text: '問題文'
+        answer: '答え'
+        problem_explanation: '問題解説'
+        target_age: '対象年齢'
+        reference: '参考用URL'
+        user_id: '作成者のID'
