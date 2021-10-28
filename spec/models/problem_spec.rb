@@ -1,7 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Problem, type: :model do
-  let(:problem) { create(:problem) }
+  let!(:problem_yesterday) { create(:problem, :yesterday) }
+  let!(:problem_one_week_ago) { create(:problem, :one_week_ago) }
+  let!(:problem_one_month_ago) { create(:problem, :one_month_ago) }
+  let!(:problem) { create(:problem) }
  
   context 'バリデーション' do
     it '有効な状態であること' do
@@ -48,6 +51,12 @@ RSpec.describe Problem, type: :model do
       problem = build(:problem, user_id: nil)
       problem.valid?
       expect(problem.errors[:user_id]).to include
+    end
+  end
+
+  context "並び順" do
+    it '最近の投稿が最初の投稿になっていること' do
+      expect(problem).to eq Problem.first
     end
   end
 end
