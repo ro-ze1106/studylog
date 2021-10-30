@@ -1,6 +1,6 @@
 class Problem < ApplicationRecord
   belongs_to :user
-  default_scope -> { order(created_at: :desc) } 
+  default_scope -> { order(created_at: :desc) }
   validates :user_id, presence: true
   validates :study_type, presence: true, length: {maximum: 30}
   validates :problem_text, presence: true
