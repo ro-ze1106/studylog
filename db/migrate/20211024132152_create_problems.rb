@@ -3,9 +3,9 @@ class CreateProblems < ActiveRecord::Migration[6.1]
     create_table :problems do |t|
       t.string :study_type
       t.string :picture
-      t.string :problem_text
+      t.text :problem_text
       t.text :answer
-      t.string :problem_explanation
+      t.text :problem_explanation
       t.string :target_age
       t.text :reference
       t.references :user, foreign_key: true

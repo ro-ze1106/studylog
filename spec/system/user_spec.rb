@@ -44,6 +44,7 @@ RSpec.describe 'user', type: :system do
     context 'ページレイアウト' do
       before do
         login_for_system(user)
+        create_list(:problem, 10, user: user)
         visit user_path(user)
       end
 
@@ -61,6 +62,24 @@ RSpec.describe 'user', type: :system do
 
       it 'プロフィール編集ページのリンクが表示されていること' do
         expect(page).to have_link 'プロフィール編集', href: edit_user_path(user)
+      end
+
+      it '問題の件数が表示されていること' do
+        expect(page).to have_content "問題 (#{user.problems.count})"
+      end
+
+      it '問題の情報が表示されていること' do
+        Problem.take(5).each do |problem|
+          expect(page).to have_link problem.study_type
+          expect(page).to have_content problem.problem_text
+          expect(page).to have_content problem.answer
+          expect(page).to have_content problem.problem_explanation
+          expect(page).to have_content problem.target_age
+        end
+      end
+
+      it '問題のページネーションが表示されていること' do
+        expect(page).to have_css "div.pagination"
       end
     end
   end

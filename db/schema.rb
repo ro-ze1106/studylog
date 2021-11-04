@@ -15,9 +15,9 @@ ActiveRecord::Schema.define(version: 2021_10_24_132152) do
   create_table "problems", force: :cascade do |t|
     t.string "study_type"
     t.string "picture"
-    t.string "problem_text"
+    t.text "problem_text"
     t.text "answer"
-    t.string "problem_explanation"
+    t.text "problem_explanation"
     t.string "target_age"
     t.text "reference"
     t.integer "user_id"
