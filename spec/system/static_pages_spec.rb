@@ -14,34 +14,22 @@ RSpec.describe 'StaticPages', type: :system do
       it '正しいタイトルが表示されることを確認' do
         expect(page).to have_title full_title
       end
-    end
-  end
 
-  describe 'ヘルプページ' do
-    before do
-      visit about_path
-    end
+      context '問題フィード', js: true do
+        let!(:user) { create(:user) }
+        let!(:problem) { create(:problem, user: user) }
 
-    it 'スタディログとは？の文字列が存在することを確認' do
-      expect(page).to have_content 'スタディログとは？'
+        it '問題のページネーションが表示されること' do
+          login_for_system(user)
+          create_list(:problem, 6, user: user)
+          visit root_path
+          expect(page).to have_content "みんなの問題 (#{user.problems.count})"
+          expect(page).to have_css "div.pagination"
+          Problem.take(5).each do |p|
+            expect(page).to have_link p.study_type
+          end
+        end
+      end
     end
-
-    it '正しいタイトルが表示されることを確認' do
-      expect(page).to have_title full_title('スタディログとは？')
-    end
-  end
-
-  describe '利用規約ページ' do
-    before do
-      visit use_of_terms_path
-    end
-
-    it '利用規約の文字列が存在することを確認' do
-      expect(page).to have_content '利用規約'
-    end
-
-    it '正しいタイトルが表示されることを確認' do
-      expect(page).to have_title full_title('利用規約')
-    end
-  end
+  end 
 end

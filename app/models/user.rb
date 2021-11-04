@@ -43,4 +43,9 @@ class User < ApplicationRecord
   def forget
     update_attribute(:remember_digest, nil)
   end
+
+  # フィード一覧を取得
+  def feed
+    Problem.where("user_id = ?", id)
+  end
 end
