@@ -19,8 +19,11 @@ RSpec.describe 'StaticPages', type: :system do
         let!(:user) { create(:user) }
         let!(:problem) { create(:problem, user: user) }
 
-        it '問題のページネーションが表示されること' do
+        before do
           login_for_system(user)
+        end
+
+        it '問題のページネーションが表示されること' do
           create_list(:problem, 6, user: user)
           visit root_path
           expect(page).to have_content "みんなの問題 (#{user.problems.count})"
@@ -28,6 +31,11 @@ RSpec.describe 'StaticPages', type: :system do
           Problem.take(5).each do |p|
             expect(page).to have_link p.study_type
           end
+        end
+
+        it '「問題作成」のリンクが表示されていること' do
+          visit root_path
+          expect(page).to have_link "問題作成", href: new_problem_path
         end
       end
     end
