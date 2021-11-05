@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_24_132152) do
+ActiveRecord::Schema.define(version: 2021_11_05_055044) do
 
   create_table "problems", force: :cascade do |t|
     t.string "study_type"
@@ -23,6 +23,8 @@ ActiveRecord::Schema.define(version: 2021_10_24_132152) do
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "title"
+    t.string "explanation_text"
     t.index "\"user_id\", \"create_at\"", name: "index_problems_on_user_id_and_create_at"
     t.index ["user_id"], name: "index_problems_on_user_id"
   end

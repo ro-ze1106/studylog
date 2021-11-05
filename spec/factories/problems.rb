@@ -1,7 +1,9 @@
 FactoryBot.define do
   factory :problem do
     study_type { "算数" }
-    problem_text { "□を計算して答えなさい。12×7＝□" }
+    title {"計算問題"}
+    explanation_text {"□を計算して答えなさい。"}
+    problem_text { "12×7＝□" }
     answer { "94" }
     problem_explanation { "人が1グループ12人いました。7グループだと何人ですか？" }
     target_age { 12 }
