@@ -1,5 +1,9 @@
 class ProblemsController < ApplicationController
   before_action :logged_in_user
+
+  def show
+    @problem = Problem.find(params[:id])
+  end
   
  def new
   @problem = Problem.new
@@ -9,7 +13,7 @@ class ProblemsController < ApplicationController
   @problem = current_user.problems.build(problem_params)
   if @problem.save
     flash[:success] = "問題が作成されました！"
-    redirect_to root_url
+    redirect_to problem_path(@problem)
   else
     render 'problems/new'
   end

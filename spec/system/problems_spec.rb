@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "Problems", type: :system do
   let!(:user) { create(:user) }
+  let!(:problem) { create(:problem, user: user) }
 
   describe '問題作成ページ' do
     before do
@@ -58,4 +59,29 @@ RSpec.describe "Problems", type: :system do
       end
     end
   end
+
+  describe '問題詳細ページ' do
+    context 'ページレイアウト' do
+      before do
+        login_for_system(user)
+        visit problem_path(problem)
+      end
+
+      it '正しいタイトルが表示されていること' do
+        expect(page).to have_title full_title("#{problem.title}")
+      end
+
+      it '問題(problem)情報が表示されること' do
+        expect(page).to have_content problem.title
+        expect(page).to have_content problem.study_type
+        expect(page).to have_content problem.explanation_text
+        expect(page).to have_content problem.problem_text
+        expect(page).to have_content problem.answer
+        expect(page).to have_content problem.problem_explanation
+        expect(page).to have_content problem.target_age
+        expect(page).to have_content problem.reference
+      end
+    end
+  end
 end
+    

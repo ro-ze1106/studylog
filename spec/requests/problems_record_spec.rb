@@ -28,7 +28,7 @@ RSpec.describe "問題登録", type: :request do
         } }
       }.to change(Problem, :count).by(1)
       follow_redirect!
-      expect(response).to render_template('static_pages/home')
+      expect(response).to render_template('problems/show')
     end
 
     it '無効な問題データでは作成されないこと' do

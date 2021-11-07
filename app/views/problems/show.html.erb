@@ -1,0 +1,22 @@
+<% provide(:title, "#{@problem.title}") %>
+<div class="container">
+  <div class="row">
+    <h2 class="problem-title"><%= @problem.title %></h2>
+    <h4><%= @problem.study_type %></h4>
+    <h4 class="problem-explanation_text">説明文:<%= @problem.explanation_text %></h4>
+    <h4 class="problem-problem_text">問題文:<%= @problem.problem_text %></h4>
+    <h4 class="problem-answer">答え:<%= @problem.answer %></h4>
+    <div class="problem_explanations">
+      <h5 class="title-problem_explanation">問題解説</h5>
+      <h5><%= @problem.problem_explanation %></h5>
+    </div>
+    <div class="show-problem-other-info">
+      <div class="problem-info">
+        <h5>対象年齢:</h5><h4><%= @problem.target_age %></h4> <h5>才</h5>
+      </div>
+      <div class="problem-info">
+        <h5>参考用URL:</h5><%= link_to "#{@problem.reference}", @problem.reference, target: "_blank" %></h4>
+      </div>
+    </div>
+  </div>
+</div>
