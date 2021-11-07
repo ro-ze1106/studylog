@@ -20,7 +20,7 @@ RSpec.describe "Problems", type: :system do
 
       it '入力部分に適切なラベルが表示されていること' do
         expect(page).to have_content '科目'
-        expect(page).to have_content '題名'
+        expect(page).to have_content 'タイトル名'
         expect(page).to have_content '説明文'
         expect(page).to have_content '問題文'
         expect(page).to have_content '答え'
@@ -33,7 +33,7 @@ RSpec.describe "Problems", type: :system do
     context '問題作成処理' do
       it '有効な情報で問題作成を行うと問題作成成功のフラッシュが表示されること' do
         fill_in '科目', with: '算数'
-        fill_in '題名', with: '計算問題'
+        fill_in 'タイトル名', with: '計算問題'
         fill_in '説明文', with: '計算しなさい'
         fill_in '問題文', with: '1＋1'
         fill_in '答え', with: '2'
@@ -46,7 +46,7 @@ RSpec.describe "Problems", type: :system do
 
       it '無効な情報で問題作成を行うと問題作成失敗のフラッシュが表示されること' do
         fill_in '科目', with: '算数'
-        fill_in '題名', with: '計算問題'
+        fill_in 'タイトル名', with: '計算問題'
         fill_in '説明文', with: '計算しなさい'
         fill_in '問題文', with: ''
         fill_in '答え', with: '2'

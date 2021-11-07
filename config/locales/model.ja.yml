@@ -16,5 +16,5 @@ ja:
         target_age: '対象年齢'
         reference: '参考用URL'
         user_id: '作成者のID'
-        title: '題名'
+        title: 'タイトル名'
         explanation_text: '説明文'

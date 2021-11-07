@@ -29,7 +29,7 @@ RSpec.describe 'StaticPages', type: :system do
           expect(page).to have_content "みんなの問題 (#{user.problems.count})"
           expect(page).to have_css "div.pagination"
           Problem.take(5).each do |p|
-            expect(page).to have_link p.study_type
+            expect(page).to have_link p.title
           end
         end
 

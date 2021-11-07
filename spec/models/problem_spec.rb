@@ -23,6 +23,12 @@ RSpec.describe Problem, type: :model do
       expect(problem.errors[:study_type]).to include
     end
 
+    it 'タイトル名がなければ無効であること' do
+      problem = build(:problem, title: nil)
+      problem.valid?
+      expect(problem.errors[:title]).to include
+    end
+
     it '問題文がなければ無効なこと' do
       problem = build(:problem, problem_text: nil)
       problem.valid?

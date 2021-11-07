@@ -70,8 +70,8 @@ RSpec.describe 'user', type: :system do
 
       it '問題の情報が表示されていること' do
         Problem.take(7).each do |problem|
-          expect(page).to have_link problem.study_type
-          expect(page).to have_content problem.title
+          expect(page).to have_content problem.study_type
+          expect(page).to have_link problem.title
           expect(page).to have_content problem.explanation_text
           expect(page).to have_content problem.problem_text
           expect(page).to have_content problem.answer

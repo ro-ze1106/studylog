@@ -3,6 +3,7 @@ class Problem < ApplicationRecord
   default_scope -> { order(created_at: :desc) }
   validates :user_id, presence: true
   validates :study_type, presence: true, length: {maximum: 30}
+  validates :title, presence: true
   validates :problem_text, presence: true
   validates :answer, presence: true
   validates :target_age,
