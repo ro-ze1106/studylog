@@ -2,6 +2,11 @@
 <div class="container">
   <div class="row">
     <h2 class="problem-title"><%= @problem.title %></h2>
+    <div class="change-problem">
+      <% if current_user == @problem.user %>
+        <%= link_to "編集", edit_problem_path(@problem), class: 'edit-problem' %>
+      <% end %>
+    </div>
     <h4><%= @problem.study_type %></h4>
     <h4 class="problem-explanation_text">説明文:<%= @problem.explanation_text %></h4>
     <h4 class="problem-problem_text">問題文:<%= @problem.problem_text %></h4>

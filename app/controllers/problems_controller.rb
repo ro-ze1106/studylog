@@ -19,6 +19,20 @@ class ProblemsController < ApplicationController
   end
 end
 
+def edit
+  @problem = Problem.find(params[:id])
+end
+
+def update
+  @problem = Problem.find(params[:id])
+  if @problem.update(problem_params)
+    flash[:succcess] = "問題情報が更新されました！"
+    redirect_to @problem
+  else
+    render 'edit'
+  end
+end
+
   private
 
   def problem_params
