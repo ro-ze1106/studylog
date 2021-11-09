@@ -6,13 +6,14 @@ RSpec.describe "問題登録", type: :request do
 
   context 'ログインしているユーザーの場合' do
     before do
-      login_for_request(user)
       get new_problem_path
+      login_for_request(user)
     end
 
-    it 'レスポンスが正常に表示されてこと' do
-      expect(response).to have_http_status '200'
-      expect(response).to render_template('problems/new')
+    context 'フレンドリーフォワーディング' do
+      it 'レスポンスが正常に表示されてこと' do
+        expect(response).to redirect_to new_problem_url
+      end
     end
 
     it '有効な問題データが作成されること' do
