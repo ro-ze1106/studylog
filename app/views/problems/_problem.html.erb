@@ -9,6 +9,10 @@
   <span class="target_age">対象年齢:<%= problem.target_age %></span><br>
   <span class="reference">参考用URL:<%= link_to problem.reference %></span><br>
   <span class="timestamp">
-    Posted <%= time_ago_in_words(problem.created_at) %> ago.
+  <%= time_ago_in_words(problem.created_at) %>前に投稿
   </span>
+  <% if current_user.admin? || (current_user == problem.user) %>
+    <%= link_to "削除", problem_path(problem), method: :delete,
+                       data: { confirm: "本当に削除しますか？" } %>
+  <% end %>
 </li>

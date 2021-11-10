@@ -6,6 +6,10 @@
       <% if current_user == @problem.user %>
         <%= link_to "編集", edit_problem_path(@problem), class: 'edit-problem' %>
       <% end %>
+      <% if current_user.admin? || (current_user == @problem.user) %>
+        <%= link_to "削除", problem_path(@problem), method: :delete, class: 'delete-problem',
+                       data: { confirm: "本当に削除しますか？" } %>
+      <% end %>
     </div>
     <h4><%= @problem.study_type %></h4>
     <h4 class="problem-explanation_text">説明文:<%= @problem.explanation_text %></h4>

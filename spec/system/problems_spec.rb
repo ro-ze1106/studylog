@@ -82,6 +82,18 @@ RSpec.describe "Problems", type: :system do
         expect(page).to have_content problem.reference
       end
     end
+
+    context '料理の削除', js: true do
+      it '削除成功のフラッシュが表示されること' do
+        login_for_system(user)
+        visit problem_path(problem)
+        within find('.change-problem') do
+          click_on "削除"
+        end
+        page.driver.browser.switch_to.alert.accept
+        expect(page).to have_content '問題が削除されました'
+      end
+    end
   end
 
   describe '問題編集ページ' do
@@ -135,6 +147,14 @@ RSpec.describe "Problems", type: :system do
         click_button "更新する"
         expect(page).to have_content 'タイトル名を入力してください'
         expect(problem.reload.title).not_to eq ''
+      end
+
+      context '問題の削除処理', js: true do
+        it '削除成功のフラッシュが表示されること' do
+          click_on "削除"
+          page.driver.browser.switch_to.alert.accept
+          expect(page).to have_content "問題が削除されました"
+        end
       end
     end
   end

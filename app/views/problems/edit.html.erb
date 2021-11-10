@@ -37,6 +37,9 @@
           <%= f.text_field :reference, class: 'form-control', id: 'problem_reference' %>
         </div>
         <%= f.submit "更新する", class: "btn btn-primary" %>
+        <p></p>
+        <%= link_to "問題を削除する", problem_path(@problem), method: :delete,
+                                                   data: { confirm: "本当に削除しますか？" } %>
       <% end %>
     </div>
   </div>
