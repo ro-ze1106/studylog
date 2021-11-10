@@ -1,5 +1,6 @@
 class ProblemsController < ApplicationController
   before_action :logged_in_user
+  before_action :correct_user, only: [:edit, :update]
 
   def show
     @problem = Problem.find(params[:id])
@@ -37,5 +38,11 @@ end
 
   def problem_params
     params.require(:problem).permit(:study_type, :title, :explanation_text, :problem_text, :answer, :problem_explanation, :taget_age, :reference)
+  end
+
+  def correct_user
+    # 現在のユーザーが更新対象の問題を保有しているかどうか確認
+    @problem = current_user.problems.find_by(id: params[:id])
+    redirect_to root_url if @problem.nil?
   end
 end
