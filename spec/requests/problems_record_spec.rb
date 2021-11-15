@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "問題登録", type: :request do
+RSpec.describe '問題登録', type: :request do
   let!(:user) { create(:user) }
   let!(:problem) { create(:problem, user: user) }
 
@@ -25,8 +25,7 @@ RSpec.describe "問題登録", type: :request do
                                                  answer: '水素',
                                                  problem_explanation: '元素記号表を覚えよう',
                                                  target_age: '13',
-                                                 reference: 'https://www.gadgety.net/shin/trivia/ptable/'
-        } }
+                                                 reference: 'https://www.gadgety.net/shin/trivia/ptable/' } }
       }.to change(Problem, :count).by(1)
       follow_redirect!
       expect(response).to render_template('problems/show')
@@ -35,14 +34,13 @@ RSpec.describe "問題登録", type: :request do
     it '無効な問題データでは作成されないこと' do
       expect {
         post problems_path, params: { problem: { study_type: '',
-                                      title: '元素記号',
-                                      explanation_text: '元素記号を答えなさい',
-                                      problem_text: '',
-                                      answer: '',
-                                      problem_explanation: '元素記号表を覚えよう',
-                                      target_age: '13',
-                                      reference: 'https://www.gadgety.net/shin/trivia/ptable/'
-        } } 
+                                                 title: '元素記号',
+                                                 explanation_text: '元素記号を答えなさい',
+                                                 problem_text: '',
+                                                 answer: '',
+                                                 problem_explanation: '元素記号表を覚えよう',
+                                                 target_age: '13',
+                                                 reference: 'https://www.gadgety.net/shin/trivia/ptable/' } }
       }.not_to change(Problem, :count)
       expect(response).to render_template('problems/new')
     end

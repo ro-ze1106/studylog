@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Problems", type: :system do
+RSpec.describe 'Problems', type: :system do
   let!(:user) { create(:user) }
   let!(:problem) { create(:problem, user: user) }
 
@@ -16,7 +16,7 @@ RSpec.describe "Problems", type: :system do
       end
 
       it '正しいタイトルが表示されていること' do
-        expect(page).to have_title full_title ('問題作成')
+        expect(page).to have_title full_title('問題作成')
       end
 
       it '入力部分に適切なラベルが表示されていること' do
@@ -68,7 +68,7 @@ RSpec.describe "Problems", type: :system do
       end
 
       it '正しいタイトルが表示されていること' do
-        expect(page).to have_title full_title("#{problem.title}")
+        expect(page).to have_title full_title(problem.title.to_s)
       end
 
       it '問題(problem)情報が表示されること' do
@@ -88,7 +88,7 @@ RSpec.describe "Problems", type: :system do
         login_for_system(user)
         visit problem_path(problem)
         within find('.change-problem') do
-          click_on "削除"
+          click_on '削除'
         end
         page.driver.browser.switch_to.alert.accept
         expect(page).to have_content '問題が削除されました'
@@ -100,7 +100,7 @@ RSpec.describe "Problems", type: :system do
     before do
       login_for_system(user)
       visit problem_path(problem)
-      click_link "編集"
+      click_link '編集'
     end
 
     context 'レイアウトページ' do
@@ -122,15 +122,15 @@ RSpec.describe "Problems", type: :system do
 
     context '問題の更新処理' do
       it '有効な更新' do
-        fill_in '教科' , with: '更新:算数'
-        fill_in 'タイトル名' , with: '更新:計算問題'
-        fill_in '説明文' , with: '更新:計算しなさい'
-        fill_in '問題文' , with: '更新:12×7＝'
-        fill_in '答え' , with: '更新:84'
-        fill_in '問題解説' , with: '更新:人が1グループ12人いました。7グループだと何人ですか？'
-        fill_in '対象年齢' , with: '12'
-        fill_in '参考用URL' , with: 'hensyu-https://www.dainippon-tosho.co.jp/mext/e07.html'
-        click_button "更新する"
+        fill_in '教科', with: '更新:算数'
+        fill_in 'タイトル名', with: '更新:計算問題'
+        fill_in '説明文', with: '更新:計算しなさい'
+        fill_in '問題文', with: '更新:12×7＝'
+        fill_in '答え', with: '更新:84'
+        fill_in '問題解説', with: '更新:人が1グループ12人いました。7グループだと何人ですか？'
+        fill_in '対象年齢', with: '12'
+        fill_in '参考用URL', with: 'hensyu-https://www.dainippon-tosho.co.jp/mext/e07.html'
+        click_button '更新する'
         expect(page).to have_content '問題情報が更新されました！'
         expect(problem.reload.study_type).to eq '更新:算数'
         expect(problem.reload.title).to eq '更新:計算問題'
@@ -143,17 +143,17 @@ RSpec.describe "Problems", type: :system do
       end
 
       it '無効な更新' do
-        fill_in 'タイトル名' , with: ''
-        click_button "更新する"
+        fill_in 'タイトル名', with: ''
+        click_button '更新する'
         expect(page).to have_content 'タイトル名を入力してください'
         expect(problem.reload.title).not_to eq ''
       end
 
       context '問題の削除処理', js: true do
         it '削除成功のフラッシュが表示されること' do
-          click_on "削除"
+          click_on '削除'
           page.driver.browser.switch_to.alert.accept
-          expect(page).to have_content "問題が削除されました"
+          expect(page).to have_content '問題が削除されました'
         end
       end
     end

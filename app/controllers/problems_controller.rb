@@ -1,11 +1,11 @@
 class ProblemsController < ApplicationController
   before_action :logged_in_user
-  before_action :correct_user, only: [:edit, :update]
+  before_action :correct_user, only: %i[edit update]
 
   def show
     @problem = Problem.find(params[:id])
   end
-  
+
   def new
     @problem = Problem.new
   end
@@ -13,7 +13,7 @@ class ProblemsController < ApplicationController
   def create
     @problem = current_user.problems.build(problem_params)
     if @problem.save
-      flash[:success] = "問題が作成されました！"
+      flash[:success] = '問題が作成されました！'
       redirect_to problem_path(@problem)
     else
       render 'problems/new'
@@ -27,7 +27,7 @@ class ProblemsController < ApplicationController
   def update
     @problem = Problem.find(params[:id])
     if @problem.update(problem_params)
-      flash[:succcess] = "問題情報が更新されました！"
+      flash[:succcess] = '問題情報が更新されました！'
       redirect_to @problem
     else
       render 'edit'
@@ -39,7 +39,7 @@ class ProblemsController < ApplicationController
     if current_user.admin? || current_user?(@problem.user)
       @problem.destroy
       flash[:success] = '問題が削除されました'
-      redirect_to request.referrer == user_url(@problem.user) ? user_url(@problem.user) : root_url
+      redirect_to request.referer == user_url(@problem.user) ? user_url(@problem.user) : root_url
     else
       flash[:danger] = '別アカウントの問題は削除できません'
       redirect_to root_url
@@ -56,5 +56,5 @@ class ProblemsController < ApplicationController
       # 現在のユーザーが更新対象の問題を保有しているかどうか確認
       @problem = current_user.problems.find_by(id: params[:id])
       redirect_to root_url if @problem.nil?
-    end   
+    end
 end

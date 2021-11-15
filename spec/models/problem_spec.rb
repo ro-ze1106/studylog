@@ -5,7 +5,7 @@ RSpec.describe Problem, type: :model do
   let!(:problem_one_week_ago) { create(:problem, :one_week_ago) }
   let!(:problem_one_month_ago) { create(:problem, :one_month_ago) }
   let!(:problem) { create(:problem) }
- 
+
   context 'バリデーション' do
     it '有効な状態であること' do
       expect(problem).to be_valid
@@ -53,14 +53,14 @@ RSpec.describe Problem, type: :model do
       expect(problem.errors[:taget_age]).to include
     end
 
-    it "ユーザーIDがなければ無効な状態であること" do
+    it 'ユーザーIDがなければ無効な状態であること' do
       problem = build(:problem, user_id: nil)
       problem.valid?
       expect(problem.errors[:user_id]).to include
     end
   end
 
-  context "並び順" do
+  context '並び順' do
     it '最近の投稿が最初の投稿になっていること' do
       expect(problem).to eq Problem.first
     end

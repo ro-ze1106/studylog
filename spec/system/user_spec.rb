@@ -81,7 +81,7 @@ RSpec.describe 'user', type: :system do
       end
 
       it '問題のページネーションが表示されていること' do
-        expect(page).to have_css "div.pagination"
+        expect(page).to have_css 'div.pagination'
       end
     end
   end

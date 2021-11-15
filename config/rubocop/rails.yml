@@ -19,8 +19,8 @@ Rails/Present:
 Rails/SafeNavigation:
   ConvertTry: true
 
-Rails/SaveBang:
-  Enabled: true
+# Rails/SaveBang:
+#   Enabled: true
 
 Rails/UnknownEnv:
   Environments:
@@ -28,3 +28,9 @@ Rails/UnknownEnv:
     - test # rubocop default.yml
     - production # rubocop default.yml
     - staging
+
+Rails/SkipsModelValidations:
+  Enabled: false
+
+Rails/HelperInstanceVariable:
+  Enabled: false

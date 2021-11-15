@@ -46,6 +46,6 @@ class User < ApplicationRecord
 
   # フィード一覧を取得
   def feed
-    Problem.where("user_id = ?", id)
+    Problem.where('user_id = ?', id)
   end
 end
