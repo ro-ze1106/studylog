@@ -20,7 +20,7 @@ RSpec.describe "Problems", type: :system do
       end
 
       it '入力部分に適切なラベルが表示されていること' do
-        expect(page).to have_content '科目'
+        expect(page).to have_content '教科'
         expect(page).to have_content 'タイトル名'
         expect(page).to have_content '説明文'
         expect(page).to have_content '問題文'
@@ -33,7 +33,7 @@ RSpec.describe "Problems", type: :system do
 
     context '問題作成処理' do
       it '有効な情報で問題作成を行うと問題作成成功のフラッシュが表示されること' do
-        fill_in '科目', with: '算数'
+        fill_in '教科', with: '算数'
         fill_in 'タイトル名', with: '計算問題'
         fill_in '説明文', with: '計算しなさい'
         fill_in '問題文', with: '1＋1'
@@ -46,7 +46,7 @@ RSpec.describe "Problems", type: :system do
       end
 
       it '無効な情報で問題作成を行うと問題作成失敗のフラッシュが表示されること' do
-        fill_in '科目', with: '算数'
+        fill_in '教科', with: '算数'
         fill_in 'タイトル名', with: '計算問題'
         fill_in '説明文', with: '計算しなさい'
         fill_in '問題文', with: ''
@@ -109,7 +109,7 @@ RSpec.describe "Problems", type: :system do
       end
 
       it '入力部分に適切なラベルが表座されること' do
-        expect(page).to have_content '科目'
+        expect(page).to have_content '教科'
         expect(page).to have_content 'タイトル名'
         expect(page).to have_content '説明文'
         expect(page).to have_content '問題文'
@@ -122,7 +122,7 @@ RSpec.describe "Problems", type: :system do
 
     context '問題の更新処理' do
       it '有効な更新' do
-        fill_in '科目' , with: '更新:算数'
+        fill_in '教科' , with: '更新:算数'
         fill_in 'タイトル名' , with: '更新:計算問題'
         fill_in '説明文' , with: '更新:計算しなさい'
         fill_in '問題文' , with: '更新:12×7＝'

@@ -56,5 +56,5 @@ class ProblemsController < ApplicationController
       # 現在のユーザーが更新対象の問題を保有しているかどうか確認
       @problem = current_user.problems.find_by(id: params[:id])
       redirect_to root_url if @problem.nil?
-    end
+    end   
 end
