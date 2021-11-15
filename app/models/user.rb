@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :problems, dependent: :destroy
   attr_accessor :remember_token
 
   before_save { self.email = email.downcase }
@@ -41,5 +42,10 @@ class User < ApplicationRecord
   # ユーザーのログイン情報を破棄する
   def forget
     update_attribute(:remember_digest, nil)
+  end
+
+  # フィード一覧を取得
+  def feed
+    Problem.where('user_id = ?', id)
   end
 end

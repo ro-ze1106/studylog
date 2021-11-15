@@ -13,5 +13,15 @@
       </section>
       <%= link_to "プロフィール編集", edit_user_path(@user) %>
     </div>
-  </div>
+    <div class="row">
+      <div class="col-md-9">
+        <% if @user.problems.any? %>
+          <h3>問題 (<%= @user.problems.count %>)</h3>
+          <ol class="problems">
+            <%= render @problems %>
+          </ol>
+          <%= will_paginate @problems %>
+        <% end %>
+      </div>
+    </div>
 </div>

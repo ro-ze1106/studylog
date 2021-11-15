@@ -33,6 +33,9 @@ Style/MutableConstant:
 Style/AsciiComments:
   Enabled: false
 
+Style/GuardClause:
+  Enabled: false
+
 Layout/FirstHashElementLineBreak:
   Enabled: false
 
@@ -46,7 +49,7 @@ Metrics/LineLength:
   Max: 160
 
 Metrics/BlockLength:
-  Max: 60
+  Max: 160
 
 Metrics/AbcSize:
   Max: 45
