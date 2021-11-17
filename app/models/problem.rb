@@ -18,4 +18,8 @@ class Problem < ApplicationRecord
                       message:"画像の拡張子をjpegかgifかpngにして下さい。"},
                 size: { less_than: 5.megabytes,
                       message:"は5MBより大きい画像はアップロードできません。"}
+  
+  def display_picture
+    picture.variant(resize_to_limit: [200, 200])
+  end
 end

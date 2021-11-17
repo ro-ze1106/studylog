@@ -3,7 +3,7 @@
   <div class="row">
   <div class="col-md-4">
       <span class="picture">
-      <%= image_tag @problem.picture if @problem.picture.attached? %>
+      <%= image_tag @problem.display_picture if @problem.picture.attached? %>
       </span>
     </div>
     <h2 class="problem-title"><%= @problem.title %></h2>
