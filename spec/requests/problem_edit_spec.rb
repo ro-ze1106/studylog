@@ -7,7 +7,6 @@ RSpec.describe '問題編集', type: :request do
   let(:picture2_path) { File.join(Rails.root, 'spec/fixtures/test_problem2.png') }
   let(:picture2) { Rack::Test::UploadedFile.new(picture2_path) }
 
-
   context '認可されたユーザーの場合' do
     it 'レスポンスが正常に表示されること(+フレンドリーフォワーディング)' do
       get edit_problem_path(problem)
