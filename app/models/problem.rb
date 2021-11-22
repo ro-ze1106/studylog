@@ -1,5 +1,6 @@
 class Problem < ApplicationRecord
   belongs_to :user
+  has_one_attached :picture
   default_scope -> { order(created_at: :desc) }
   validates :user_id, presence: true
   validates :study_type, presence: true, length: { maximum: 30 }
@@ -13,4 +14,12 @@ class Problem < ApplicationRecord
               less_than_or_equal_to: 18
             },
             allow_nil: true
+  validates :picture, content_type: { in: %w[image/jpeg image/gif image/png],
+                                      message: '画像の拡張子をjpegかgifかpngにして下さい。' },
+                      size: { less_than: 5.megabytes,
+                              message: 'は5MBより大きい画像はアップロードできません。' }
+
+  def display_picture
+    picture.variant(resize_to_limit: [200, 200])
+  end
 end

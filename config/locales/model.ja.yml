@@ -18,3 +18,4 @@ ja:
         user_id: '作成者のID'
         title: 'タイトル名'
         explanation_text: '説明文'
+        picture: 問題に関連する画像

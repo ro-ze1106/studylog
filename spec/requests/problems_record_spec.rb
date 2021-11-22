@@ -3,6 +3,8 @@ require 'rails_helper'
 RSpec.describe '問題登録', type: :request do
   let!(:user) { create(:user) }
   let!(:problem) { create(:problem, user: user) }
+  let(:picture_path) { File.join(Rails.root, 'spec/fixtures/test_problem.png') }
+  let(:picture) { Rack::Test::UploadedFile.new(picture_path) }
 
   context 'ログインしているユーザーの場合' do
     before do
@@ -25,7 +27,8 @@ RSpec.describe '問題登録', type: :request do
                                                  answer: '水素',
                                                  problem_explanation: '元素記号表を覚えよう',
                                                  target_age: '13',
-                                                 reference: 'https://www.gadgety.net/shin/trivia/ptable/' } }
+                                                 reference: 'https://www.gadgety.net/shin/trivia/ptable/',
+                                                 picture: picture } }
       }.to change(Problem, :count).by(1)
       follow_redirect!
       expect(response).to render_template('problems/show')
@@ -40,7 +43,8 @@ RSpec.describe '問題登録', type: :request do
                                                  answer: '',
                                                  problem_explanation: '元素記号表を覚えよう',
                                                  target_age: '13',
-                                                 reference: 'https://www.gadgety.net/shin/trivia/ptable/' } }
+                                                 reference: 'https://www.gadgety.net/shin/trivia/ptable/',
+                                                 picture: picture } }
       }.not_to change(Problem, :count)
       expect(response).to render_template('problems/new')
     end

@@ -12,6 +12,7 @@ class ProblemsController < ApplicationController
 
   def create
     @problem = current_user.problems.build(problem_params)
+    @problem.picture.attach(params[:problem][:picture])
     if @problem.save
       flash[:success] = '問題が作成されました！'
       redirect_to problem_path(@problem)
@@ -49,7 +50,7 @@ class ProblemsController < ApplicationController
   private
 
     def problem_params
-      params.require(:problem).permit(:study_type, :title, :explanation_text, :problem_text, :answer, :problem_explanation, :taget_age, :reference)
+      params.require(:problem).permit(:study_type, :title, :explanation_text, :problem_text, :answer, :problem_explanation, :taget_age, :reference, :picture)
     end
 
     def correct_user
