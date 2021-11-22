@@ -4,6 +4,9 @@ RSpec.describe '問題編集', type: :request do
   let!(:user) { create(:user) }
   let!(:other_user) { create(:user) }
   let!(:problem) { create(:problem, user: user) }
+  let(:picture2_path) { File.join(Rails.root, 'spec/fixtures/test_problem2.png') }
+  let(:picture2) { Rack::Test::UploadedFile.new(picture2_path) }
+
 
   context '認可されたユーザーの場合' do
     it 'レスポンスが正常に表示されること(+フレンドリーフォワーディング)' do
@@ -14,7 +17,8 @@ RSpec.describe '問題編集', type: :request do
                                                         title: '元素記号',
                                                         explanation_text: '元素記号を答えなさい',
                                                         problem_text: 'H',
-                                                        answer: '水素', } }
+                                                        answer: '水素',
+                                                        picture: picture2 } }
       redirect_to problem
       follow_redirect!
       expect(response).to render_template('problems/show')

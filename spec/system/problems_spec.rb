@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Problems', type: :system do
   let!(:user) { create(:user) }
-  let!(:problem) { create(:problem, user: user) }
+  let!(:problem) { create(:problem, :picture, user: user)}
 
   describe '問題作成ページ' do
     before do
@@ -41,6 +41,7 @@ RSpec.describe 'Problems', type: :system do
         fill_in '問題解説', with: '僕と友達がいました。合わせていくつ？'
         fill_in '対象年齢', with: '7'
         fill_in '参考用URL', with: 'https://hugkum.sho.jp/48150'
+        attach_file "problem[picture]", "#{Rails.root}/spec/fixtures/test_problem2.png"
         click_button '作成する'
         expect(page).to have_content '問題が作成されました！'
       end
@@ -83,7 +84,7 @@ RSpec.describe 'Problems', type: :system do
       end
     end
 
-    context '料理の削除', js: true do
+    context '問題の削除', js: true do
       it '削除成功のフラッシュが表示されること' do
         login_for_system(user)
         visit problem_path(problem)
@@ -118,6 +119,10 @@ RSpec.describe 'Problems', type: :system do
         expect(page).to have_content '対象年齢'
         expect(page).to have_content '参考用URL'
       end
+
+      it '画像アップロード部分が表示されること' do
+        expect(page).to have_css 'input[type=file]'
+      end
     end
 
     context '問題の更新処理' do
@@ -130,6 +135,7 @@ RSpec.describe 'Problems', type: :system do
         fill_in '問題解説', with: '更新:人が1グループ12人いました。7グループだと何人ですか？'
         fill_in '対象年齢', with: '12'
         fill_in '参考用URL', with: 'hensyu-https://www.dainippon-tosho.co.jp/mext/e07.html'
+        attach_file "problem[picture]", "#{Rails.root}/spec/fixtures/test_problem2.png"
         click_button '更新する'
         expect(page).to have_content '問題情報が更新されました！'
         expect(problem.reload.study_type).to eq '更新:算数'
@@ -140,6 +146,7 @@ RSpec.describe 'Problems', type: :system do
         expect(problem.reload.problem_explanation).to eq '更新:人が1グループ12人いました。7グループだと何人ですか？'
         expect(problem.reload.target_age).to eq '12'
         expect(problem.reload.reference).to eq 'hensyu-https://www.dainippon-tosho.co.jp/mext/e07.html'
+        expect(problem.reload.picture.filename.to_s).to eq "test_problem2.png"
       end
 
       it '無効な更新' do
