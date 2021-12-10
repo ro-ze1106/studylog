@@ -11,13 +11,13 @@ RSpec.describe Problem, type: :model do
       expect(problem).to be_valid
     end
 
-    it '科目がなければ無効であること' do
+    it '教科がなければ無効であること' do
       problem = build(:problem, study_type: nil)
       problem.valid?
       expect(problem.errors[:study_type]).to include
     end
 
-    it '科目が30文字以内じゃないと無効であること' do
+    it '教科が30文字以内じゃないと無効であること' do
       problem = build(:problem, study_type: 'a' * 31)
       problem.valid?
       expect(problem.errors[:study_type]).to include
