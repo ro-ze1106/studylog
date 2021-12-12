@@ -15,5 +15,19 @@ RSpec.describe "ユーザーフォロー機能", type: :request do
       expect(response).to have_http_status '302'
       expect(response).to redirect_to login_path
     end
+
+    it 'createアクションは実行できず、ログインページにリダイレクトすること' do
+      expect {
+        post relationships_path
+    }.not_to change(Relationship, :count)
+    expect(response).to redirect_to login_path
+    end
+
+    it 'destroyアクションは実行できず、ログインページにリダイレクトすること' do
+      expect {
+        delete relationship_path(user)
+    }.not_to change(Relationship, :count)
+    expect(response).to redirect_to login_path
+    end
   end
 end
