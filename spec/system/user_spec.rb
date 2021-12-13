@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'user', type: :system do
   let!(:user) { create(:user) }
+  let!(:other_user) { create(:user) }
 
   describe 'ユーザー登録ページ' do
     before do
@@ -83,6 +84,18 @@ RSpec.describe 'user', type: :system do
       it '問題のページネーションが表示されていること' do
         expect(page).to have_css 'div.pagination'
       end
+    end
+  end
+
+  context "ユーザーのフォロー/アンフォロー処理", js: true do
+    it 'ユーザーのフォロー/アンフォローができること' do
+      login_for_system(user)
+      visit user_path(other_user)
+      expect(page).to have_button 'フォローする'
+      click_button 'フォローする'
+      expect(page).to have_button 'フォロー中'
+      click_button 'フォロー中'
+      expect(page).to have_button 'フォローする'
     end
   end
 end
