@@ -5,6 +5,9 @@ RSpec.describe "Relationships", type: :system do
   let!(:user2) { create(:user) }
   let!(:user3) { create(:user) }
   let!(:user4) { create(:user) }
+  let!(:problem) { create(:problem, user: user) }
+  let!(:problem2) { create(:problem, user: user2) }
+  let!(:problem3) { create(:problem, user: user3) }
 
   describe "フォロー中の(following一覧)ページ" do
     before do
@@ -76,6 +79,25 @@ RSpec.describe "Relationships", type: :system do
           end
         end
       end
+    end
+  end
+
+  describe "フィード" do
+    before do
+      create(:relationship, follower_id: user.id, followed_id: user2.id)
+      login_for_system(user)
+    end
+
+    it 'フィードに自分の投稿を確認' do
+      expect(user.feed).to include problem
+    end
+
+    it 'フィードにフォロー中のユーザーの投稿が含まれていること' do
+      expect(user.feed).to include problem2
+    end
+
+    it 'フィードに含まれていないユーザーの投稿が含まれていないこと' do
+      expect(user.feed).not_to include problem3
     end
   end
 end
