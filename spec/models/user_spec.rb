@@ -64,7 +64,7 @@ RSpec.describe User, type: :model do
     end
   end
 
-  context "フォロー機能" do
+  context 'フォロー機能' do
     it 'フォローからフォロー解除までの動作確認' do
       expect(user.following?(other_user)).to be_falsey
       user.follow(other_user)

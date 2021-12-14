@@ -87,7 +87,7 @@ RSpec.describe 'user', type: :system do
     end
   end
 
-  context "ユーザーのフォロー/アンフォロー処理", js: true do
+  context 'ユーザーのフォロー/アンフォロー処理', js: true do
     it 'ユーザーのフォロー/アンフォローができること' do
       login_for_system(user)
       visit user_path(other_user)

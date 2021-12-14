@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Relationship, type: :model do
   let!(:relationship) { create(:relationship) }
 
-  it  'userとの関係性が有効であること' do
+  it 'userとの関係性が有効であること' do
     expect(relationship).to be_valid
   end
 
