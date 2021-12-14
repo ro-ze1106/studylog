@@ -11,7 +11,11 @@
       <section class="user_name_info">
         <%= @user.name %>
       </section>
+      <section class="stats">
+        <%= render 'shared/stats' %>
+      </section>
       <%= link_to "プロフィール編集", edit_user_path(@user) %>
+      <%= render 'follow_form' if logged_in? %>
     </div>
     <div class="row">
       <div class="col-md-9">
@@ -24,4 +28,5 @@
         <% end %>
       </div>
     </div>
+  </div>
 </div>

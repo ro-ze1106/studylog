@@ -58,4 +58,3 @@ RSpec.describe '問題登録', type: :request do
     end
   end
 end
-# :study_type, :title, :explanation_text, :problem_text, :answer, :problem_explanation, :taget_age, :reference
