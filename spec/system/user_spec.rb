@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe 'user', type: :system do
   let!(:user) { create(:user) }
   let!(:other_user) { create(:user) }
+  let!(:problem) { create(:problem, user: user) }
 
   describe 'ユーザー登録ページ' do
     before do
@@ -96,6 +97,20 @@ RSpec.describe 'user', type: :system do
       expect(page).to have_button 'フォロー中'
       click_button 'フォロー中'
       expect(page).to have_button 'フォローする'
+    end
+  end
+
+  context 'お気に入り登録/解除' do
+    before do
+      login_for_system(user)
+    end
+
+    it '問題のお気に入り登録/解除ができること' do
+      expect(user.favorite?(problem)).to be_falsey 
+      user.favorite(problem)
+      expect(user.favorite?(problem)).to be_truthy 
+      user.unfavorite(problem)
+      expect(user.favorite?(problem)).to be_falsey
     end
   end
 end

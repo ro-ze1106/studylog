@@ -15,6 +15,6 @@ Rails.application.routes.draw do
   end
   resources :problems
   resources :relationships, only: [:create, :destroy]
-  post 'favorites/:problem_id/create' => "favorites#create"
-  delete 'favorites/:problem_id/destroy' => "favorites#destroy"
+  post "favorites/:problem_id/create" => "favorites#create"
+  delete "favorites/:problem_id/destroy" => "favorites#destroy"
  end
