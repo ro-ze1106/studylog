@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :favorite do
-    user_id { 1 }
-    problem_id { 1 }
+    association :user
+    association :problem
   end
 end
