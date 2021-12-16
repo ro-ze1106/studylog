@@ -5,6 +5,7 @@
       <span class="picture">
       <%= image_tag @problem.display_picture if @problem.picture.attached? %>
       </span>
+      <%= render 'users/favorite_form' %>
     </div>
     <h2 class="problem-title"><%= @problem.title %></h2>
     <div class="change-problem">

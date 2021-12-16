@@ -1,5 +1,8 @@
+<% @problem = problem %>
+
 <li id="problem-<%= problem.id %>">
   <%= link_to gravatar_for(problem.user,size: 50), problem.user %><br>
+  <%= render 'users/favorite_from' %>
   <span class="study_type">教科:<%= problem.study_type %></span><br>
   <span class="title">タイトル名:<%= link_to problem.title, problem_path(problem) %></span><br>
   <span class="picture">
