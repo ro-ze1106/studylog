@@ -32,6 +32,9 @@
       <div class="problem-info">
         <h5>参考用URL:</h5><%= link_to "#{@problem.reference}", @problem.reference, target: "_blank" %></h4>
       </div>
+      <div class ="comment">
+        <%= render "comments/new" %>
+      </div>
     </div>
   </div>
 </div>
