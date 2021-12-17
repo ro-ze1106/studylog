@@ -4,6 +4,7 @@ RSpec.describe 'user', type: :system do
   let!(:user) { create(:user) }
   let!(:other_user) { create(:user) }
   let!(:problem) { create(:problem, user: user) }
+  let!(:other_problem) { create(:problem, user: other_user) }
 
   describe 'ユーザー登録ページ' do
     before do
@@ -147,6 +148,29 @@ RSpec.describe 'user', type: :system do
       link.click
       link = find('.like')
       expect(link[:href]).to include "/favorites/#{problem.id}/create"
+    end
+
+    it 'お気に入り一覧ページが期待された通り表示されること' do
+      visit favorites_path
+      expect(page) .not_to have_css "favorite-problem"
+      user.favorite(problem)
+      user.favorite(other_problem)
+      visit favorites_path
+      expect(page).to have_css ".favorite-problem", count: 2
+      expect(page).to have_content problem.study_type
+      expect(page).to have_content problem.explanation_text
+      expect(page).to have_content problem.problem_text
+      expect(page).to have_content "作成者 #{user.name}"
+      expect(page).to have_link user.name, href: user_path(user)
+      expect(page).to have_content other_problem.study_type
+      expect(page).to have_content other_problem.explanation_text
+      expect(page).to have_content other_problem.problem_text
+      expect(page).to have_content "作成者 #{other_user.name}"
+      expect(page).to have_link user.name, href: user_path(other_user)
+      user.unfavorite(other_problem)
+      visit favorites_path
+      expect(page).to have_css ".favorite-problem", count: 1
+      expect(page).to have_content problem.study_type
     end
   end
 end

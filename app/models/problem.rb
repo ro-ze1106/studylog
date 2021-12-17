@@ -2,7 +2,6 @@ class Problem < ApplicationRecord
   belongs_to :user
   has_many :favorites, dependent: :destroy
   has_one_attached :picture
-  before_create :default_image
   default_scope -> { order(created_at: :desc) }
   validates :user_id, presence: true
   validates :study_type, presence: true, length: { maximum: 30 }
@@ -23,11 +22,5 @@ class Problem < ApplicationRecord
 
   def display_picture
     picture.variant(resize_to_limit: [200, 200])
-  end
-
-  def default_image
-    if !self.image.attached?
-      self.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'test_problem.png')), filename: 'default-image.png', content_type: 'image/png')
-    end
   end  
 end
