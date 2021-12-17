@@ -22,5 +22,5 @@ class Problem < ApplicationRecord
 
   def display_picture
     picture.variant(resize_to_limit: [200, 200])
-  end
+  end  
 end
