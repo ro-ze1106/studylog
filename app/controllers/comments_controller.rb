@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
   def create
     @problem = Problem.find(params[:problem_id])
     @user = @problem.user
-    @comment = @problem.comments.build(user_id: current_user.id, content: params[:comment] [:content])
+    @comment = @problem.comments.build(user_id: current_user.id, content: params[:comment][:content])
     if !@problem.nil? && @comment.save
       flash[:success] = "コメントを追加しました!"
     else

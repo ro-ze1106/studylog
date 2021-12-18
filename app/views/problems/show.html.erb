@@ -1,7 +1,8 @@
 <% provide(:title, "#{@problem.title}") %>
+<% @comments = @problem.feed_comment(@problem.id) %>
 <div class="container">
   <div class="row">
-  <div class="col-md-4">
+    <div class="col-md-4">
       <span class="picture">
       <%= image_tag @problem.display_picture if @problem.picture.attached? %>
       </span>
@@ -32,9 +33,10 @@
       <div class="problem-info">
         <h5>参考用URL:</h5><%= link_to "#{@problem.reference}", @problem.reference, target: "_blank" %></h4>
       </div>
-      <div class ="comment">
-        <%= render "comments/new" %>
-      </div>
+    </div>
+    <div class ="comment">
+      <%= render "comments/feed_comments" %>
+      <%= render "comments/new" %>
     </div>
   </div>
 </div>
