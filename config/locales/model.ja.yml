@@ -1,6 +1,8 @@
 ja:
   activerecord:
     attributes:
+      models:
+        comment: コメント
       user:
         name: 'ユーザー名'
         email: 'メールアドレス'
@@ -19,3 +21,8 @@ ja:
         title: 'タイトル名'
         explanation_text: '説明文'
         picture: 問題に関連する画像
+      comment:
+        user_id: コメント投稿者のID
+        problem_id: コメントされた問題のID
+        content: コメント
+        

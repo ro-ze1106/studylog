@@ -1,6 +1,7 @@
 class Problem < ApplicationRecord
   belongs_to :user
   has_many :favorites, dependent: :destroy
+  has_many :comments, dependent: :destroy
   has_one_attached :picture
   default_scope -> { order(created_at: :desc) }
   validates :user_id, presence: true
@@ -22,5 +23,10 @@ class Problem < ApplicationRecord
 
   def display_picture
     picture.variant(resize_to_limit: [200, 200])
-  end  
+  end
+
+  # 問題に付属するコメントのフィードを作成
+  def feed_comment(problem_id)
+    Comment.where('problem_id = ?', problem_id)
+  end
 end

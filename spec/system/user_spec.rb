@@ -107,9 +107,9 @@ RSpec.describe 'user', type: :system do
     end
 
     it '問題のお気に入り登録/解除ができること' do
-      expect(user.favorite?(problem)).to be_falsey 
+      expect(user.favorite?(problem)).to be_falsey
       user.favorite(problem)
-      expect(user.favorite?(problem)).to be_truthy 
+      expect(user.favorite?(problem)).to be_truthy
       user.unfavorite(problem)
       expect(user.favorite?(problem)).to be_falsey
     end
@@ -152,11 +152,11 @@ RSpec.describe 'user', type: :system do
 
     it 'お気に入り一覧ページが期待された通り表示されること' do
       visit favorites_path
-      expect(page) .not_to have_css "favorite-problem"
+      expect(page).not_to have_css 'favorite-problem'
       user.favorite(problem)
       user.favorite(other_problem)
       visit favorites_path
-      expect(page).to have_css ".favorite-problem", count: 2
+      expect(page).to have_css '.favorite-problem', count: 2
       expect(page).to have_content problem.study_type
       expect(page).to have_content problem.explanation_text
       expect(page).to have_content problem.problem_text
@@ -169,7 +169,7 @@ RSpec.describe 'user', type: :system do
       expect(page).to have_link user.name, href: user_path(other_user)
       user.unfavorite(other_problem)
       visit favorites_path
-      expect(page).to have_css ".favorite-problem", count: 1
+      expect(page).to have_css '.favorite-problem', count: 1
       expect(page).to have_content problem.study_type
     end
   end
