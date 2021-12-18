@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "コメント機能", type: :request do
+RSpec.describe 'コメント機能', type: :request do
   let!(:user) { create(:user) }
   let!(:other_user) { create(:user) }
   let!(:problem) { create(:problem) }
@@ -8,7 +8,7 @@ RSpec.describe "コメント機能", type: :request do
 
   context 'コメントの登録' do
     context 'ログインしている場合' do
-      before do 
+      before do
         login_for_request(user)
       end
 
@@ -16,7 +16,8 @@ RSpec.describe "コメント機能", type: :request do
         expect {
           post comments_path, params: { problem_id: problem.id,
                                         comment: {
-                                        content: "簡単です" } }
+                                          content: '簡単です'
+                                        } }
         }.to change(problem.comments, :count).by(1)
       end
 
@@ -24,7 +25,8 @@ RSpec.describe "コメント機能", type: :request do
         expect {
           post comments_path, params: { problem_id: problem.id,
                                         comment: {
-                                        content: "" } }
+                                          content: ''
+                                        } }
         }.not_to change(problem.comments, :count)
       end
     end
@@ -33,7 +35,7 @@ RSpec.describe "コメント機能", type: :request do
       it 'コメントは登録できず、ログインページへリダイレクトすること' do
         expect {
           post comments_path, params: { problem_id: problem.id,
-                                        comment: { content: "簡単です" } }
+                                        comment: { content: '簡単です' } }
         }.not_to change(problem.comments, :count)
         expect(response).to redirect_to login_path
       end
@@ -65,7 +67,7 @@ RSpec.describe "コメント機能", type: :request do
       it 'コメントは削除できず、ログインページへリダイレクトすること' do
         expect {
           delete comment_path(comment)
-      }.not_to change(problem.comments, :count)
+        }.not_to change(problem.comments, :count)
       end
     end
   end

@@ -25,9 +25,8 @@ class Problem < ApplicationRecord
     picture.variant(resize_to_limit: [200, 200])
   end
 
-  #問題に付属するコメントのフィードを作成
+  # 問題に付属するコメントのフィードを作成
   def feed_comment(problem_id)
-    Comment.where("problem_id = ?", problem_id)
+    Comment.where('problem_id = ?', problem_id)
   end
-
 end

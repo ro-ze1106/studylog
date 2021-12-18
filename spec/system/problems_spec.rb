@@ -172,16 +172,16 @@ RSpec.describe 'Problems', type: :system do
     it '自分に対するコメントの登録と削除が正常に完了すること' do
       login_for_system(user)
       visit problem_path(problem)
-      fill_in "comment_content", with: "難しいですね"
-      click_button "コメント"
+      fill_in 'comment_content', with: '難しいですね'
+      click_button 'コメント'
       within find("#comment-#{Comment.last.id}") do
         expect(page).to have_selector 'span', text: user.name
         expect(page).to have_selector 'span', text: '難しいですね'
       end
-      expect(page).to have_content "コメントを追加しました!"
-      click_link "削除", href: comment_path(Comment.last)
+      expect(page).to have_content 'コメントを追加しました!'
+      click_link '削除', href: comment_path(Comment.last)
       expect(page).not_to have_selector 'span', text: '難しいですね'
-      expect(page).to have_content "コメントを削除しました" 
+      expect(page).to have_content 'コメントを削除しました'
     end
 
     it '別のユーザーのコメントには削除リンクがないこと' do

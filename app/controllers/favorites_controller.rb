@@ -4,13 +4,13 @@ class FavoritesController < ApplicationController
   def index
     @favorites = current_user.favorites
   end
-  
+
   def create
     @problem = Problem.find(params[:problem_id])
     @user = @problem.user
     current_user.favorite(@problem)
     respond_to do |format|
-      format.html { redirect_to request.referrer || root_url }
+      format.html { redirect_to request.referer || root_url }
       format.js
     end
   end
@@ -19,7 +19,7 @@ class FavoritesController < ApplicationController
     @problem = Problem.find(params[:problem_id])
     current_user.favorites.find_by(problem_id: @problem.id).destroy
     respond_to do |format|
-      format.html { redirect_to request.referrer || root_url }
+      format.html { redirect_to request.referer || root_url }
       format.js
     end
   end

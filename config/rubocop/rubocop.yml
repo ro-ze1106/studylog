@@ -49,7 +49,7 @@ Metrics/LineLength:
   Max: 160
 
 Metrics/BlockLength:
-  Max: 160
+  Max: 200
 
 Metrics/AbcSize:
   Max: 45

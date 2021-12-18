@@ -83,9 +83,9 @@ class User < ApplicationRecord
 
   # 問題をお気に入りに登録する
   def favorite(problem)
-    Favorite.create!(user_id: id, problem_id: problem.id)  
+    Favorite.create!(user_id: id, problem_id: problem.id)
   end
-  
+
   # 問題をお気に入り解除する
   def unfavorite(problem)
     Favorite.find_by(user_id: id, problem_id: problem.id).destroy
@@ -93,6 +93,6 @@ class User < ApplicationRecord
 
   # 現在のユーザーがお気に入り登録したらtrueを返す
   def favorite?(problem)
-    !Favorite.find_by(user_id: id, problem_id: problem.id).nil? 
+    !Favorite.find_by(user_id: id, problem_id: problem.id).nil?
   end
 end

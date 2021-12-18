@@ -24,9 +24,9 @@ RSpec.describe Comment, type: :model do
     end
 
     it 'コメントが100文字以内であること' do
-      comment = build(:comment, content: "あ" * 101)
+      comment = build(:comment, content: 'あ' * 101)
       comment.valid?
-      expect(comment.errors[:content]).to include("は100文字以内で入力してください")
+      expect(comment.errors[:content]).to include('は100文字以内で入力してください')
     end
   end
 end
