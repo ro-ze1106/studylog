@@ -173,4 +173,80 @@ RSpec.describe 'user', type: :system do
       expect(page).to have_content problem.study_type
     end
   end
+
+  context '通知生成' do
+    before do
+      login_for_system(user)
+    end
+
+    context '自分の問題に対して' do
+      before do
+        visit problem_path(problem)
+      end
+
+      it 'お気に入り登録によって通知が作成されないこと' do
+        find('.like').click
+        visit problem_path(problem)
+        expect(page).to have_css 'li.no_notification'
+        visit notifications_path
+        expect(page).not_to have_content 'お気に入りに登録されました。'
+        expect(page).not_to have_content problem.study_type
+        expect(page).not_to have_content problem.problem_text
+        expect(page).not_to have_content problem.explanation_text
+        expect(page).not_to have_content problem.created_at
+      end
+
+      it 'コメントによって通知がされないこと' do
+        fill_in "comment_content", with: "コメント"
+        click_button "コメント"
+        expect(page).to have_css 'li.no_notification'
+        visit notifications_path
+        expect(page).not_to have_content 'コメントしました'
+        expect(page).not_to have_content 'コメント'
+        expect(page).not_to have_content problem.study_type
+        expect(page).not_to have_content problem.problem_text
+        expect(page).not_to have_content problem.explanation_text
+        expect(page).not_to have_content problem.created_at
+      end
+    end
+
+    context '自分以外のユーザーに対して' do
+      before do
+        visit problem_path(other_problem)
+      end
+
+      it 'お気に入りによって通知がされること' do
+        find('.like').click
+        visit problem_path(other_user)
+        expect(page).to have_css 'li.no_notification'
+        logout
+        login_for_system(other_user)
+        expect(page).to have_css 'li.new_notification'
+        visit notifications_path
+        expect(page).to have_css 'li.no_notification'
+        expect(page).to have_content "あなたの問題が#{user.name}さんにお気に入り登録されました。"
+        expect(page).to have_content problem.study_type
+        expect(page).to have_content problem.problem_text
+        expect(page).to have_content problem.explanation_text
+        expect(page).to have_content problem.created_at.strftime("%Y/%m/%d(%a) %H:%M")
+      end
+
+      it 'コメントによって通知されること' do
+        fill_in "comment_content", with: "コメント"
+        click_button "コメント"
+        expect(page).to have_css 'li.no_notification'
+        logout
+        login_for_system(other_user)
+        expect(page).to have_css 'li.new_notification'
+        visit notifications_path
+        expect(page).to have_css 'li.no_notification'
+        expect(page).to have_content "あなたの問題に#{user.name}さんがコメントしました。"
+        expect(page).to have_content '「コメント」'
+        expect(page).to have_content problem.study_type
+        expect(page).to have_content problem.problem_text
+        expect(page).to have_content problem.explanation_text
+        expect(page).to have_content problem.created_at.strftime("%Y/%m/%d(%a) %H:%M")
+      end
+    end
+  end
 end

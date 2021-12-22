@@ -1,7 +1,8 @@
+<% comment_user = User.find(comment.user_id) %>
 <li id="comment-<%= comment.id %>">
   <div class="row">
     <div class="col-md-2">
-      <span class="user"><%= link_to comment.problem.user.name, comment.problem.user %></span>
+      <span class="user"><%= link_to comment_user.name, comment_user %></span>
     </div>
     <div class="col-md-8">
       <span class="comment"><%= comment.content %></span>

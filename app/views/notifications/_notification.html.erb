@@ -1,0 +1,24 @@
+<% user = User.find(notification.from_user_id) %>
+<% problem = Problem.find(notification.problem_id) %>
+<li id="notification-<%= notification.id %>">
+  <div>
+    <% if notification.variety == 1 %>
+      <p><%= notification.created_at.strftime("%Y/%m/%d(%a) %H:%M") %></p>
+      <p class="notification-message">あなたの問題が<%= link_to user.name, user_path(user) %>さんにお気に入り登録されました。</p>
+    <% elsif notification.variety == 2 %>
+      <p><%= notification.created_at.strftime("%Y/%m/%d(%a) %H:%M") %></p>
+      <p class ="notification-message">あなたの問題に<%= link_to user.name, user_path(user) %>さんがコメントしました。<br>
+      「<%= notification.content %>」</p>
+    <% end %>
+  </div>
+  <div class="row">
+    <div class="col-md-2">
+      <%= image_tag problem.display_picture if problem.picture.attached? %>
+    </div>
+    <div class="col-md-7">
+      <p><%= link_to problem.study_type, problem_path(problem) %></p>
+      <p><%= problem.explanation_text %></p>
+      <p><%= problem.problem_text %></p>
+    </div>
+  </div>
+</li>
