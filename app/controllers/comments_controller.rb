@@ -9,10 +9,10 @@ class CommentsController < ApplicationController
       flash[:success] = 'コメントを追加しました!'
       # 自分以外のユーザーからコメントがあった時のみ通知を作成
       if @user != current_user
-        @user.notifications.create(problem_id: @prblem.id, variety: 2,
-                                   from_user_id: current_user_id,
-                                   content: @content.content) # コメントは通知差別2
-        @user.update(:notification, true)
+        @user.notifications.create(problem_id: @problem.id, variety: 2,
+                                   from_user_id: current_user.id,
+                                   content: @comment.content) # コメントは通知種別2
+        @user.update_attribute(:notification, true)
       end
     else
       flash[:danger] = 'コメントを入力して下さい。'
