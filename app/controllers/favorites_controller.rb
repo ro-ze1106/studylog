@@ -17,7 +17,7 @@ class FavoritesController < ApplicationController
     if @user != current_user
       @user.notifications.create(problem_id: @problem.id, variety: 1,
                                  from_user_id: current_user.id) # お気に入り登録は通知差別1
-      @user.update(:notification, true)
+      @user.update_attribute(:notification, true)
     end
   end
 
