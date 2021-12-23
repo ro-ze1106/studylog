@@ -2,6 +2,9 @@ class ProblemsController < ApplicationController
   before_action :logged_in_user
   before_action :correct_user, only: %i[edit update]
 
+  def index
+  end
+
   def show
     @problem = Problem.find(params[:id])
     @comment = Comment.new
@@ -51,7 +54,7 @@ class ProblemsController < ApplicationController
   private
 
     def problem_params
-      params.require(:problem).permit(:study_type, :title, :explanation_text, :problem_text, :answer, :problem_explanation, :taget_age, :reference, :picture)
+      params.require(:problem).permit(:study_type, :title, :explanation_text, :problem_text, :answer, :problem_explanation, :target_age, :reference, :picture)
     end
 
     def correct_user
