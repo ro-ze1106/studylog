@@ -11,9 +11,14 @@
   <body>
     <div id="page">
       <%= render 'layouts/header' %>
-      <% flash.each do |message_type, message| %>
-        <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
-      <% end %>
+      <div id="fh5co-wireframe">
+        <div class="container">
+          <% flash.each do |message_type, message| %>
+            <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
+          <% end %>
+          <%= render 'layouts/search' if logged_in? %>
+        </div>
+      </div>
       <%= yield %>
     </div>
     <%= render 'layouts/footer' %>

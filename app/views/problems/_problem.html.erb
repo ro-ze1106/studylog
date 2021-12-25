@@ -3,17 +3,17 @@
 <li id="problem-<%= problem.id %>">
   <%= link_to gravatar_for(problem.user,size: 50), problem.user %><br>
   <%= render 'users/favorite_form' %>
-  <span class="study_type">教科:<%= problem.study_type %></span><br>
-  <span class="title">タイトル名:<%= link_to problem.title, problem_path(problem) %></span><br>
+  <span class="study_type">教科：<%= problem.study_type %></span><br>
+  <span class="title">タイトル名：<%= link_to problem.title, problem_path(problem) %></span><br>
   <span class="picture">
     <%= image_tag problem.display_picture if problem.picture.attached? %>
   </span><br>
-  <span class="explanation_text">説明文:<%= problem.explanation_text %></span><br>
-  <span class="problem_text">問題文:<%= problem.problem_text %></span><br>
-  <span class="answer">答え:<%= problem.answer %></span><br>
-  <span class="problem_explanation">問題解説:<%= problem.problem_explanation %></span><br>
-  <span class="target_age">対象年齢:<%= problem.target_age %></span><br>
-  <span class="reference">参考用URL:<%= link_to problem.reference %></span><br>
+  <span class="explanation_text">説明文：<%= problem.explanation_text %></span><br>
+  <span class="problem_text">問題文：<%= problem.problem_text %></span><br>
+  <span class="answer">答え：<%= problem.answer %></span><br>
+  <span class="problem_explanation">問題解説：<%= problem.problem_explanation %></span><br>
+  <span class="target_age">対象年齢(学年)：<%= problem.target_age %>才</span><br>
+  <span class="reference">参考用URL：<%= link_to problem.reference %></span><br>
   <span class="timestamp">
   <%= time_ago_in_words(problem.created_at) %>前に投稿
   </span>

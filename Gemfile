@@ -20,6 +20,7 @@ gem 'faker'
 gem 'will_paginate'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
+gem 'ransack'
 
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'bootstrap-sass'
