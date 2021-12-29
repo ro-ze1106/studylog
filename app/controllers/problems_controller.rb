@@ -51,6 +51,22 @@ class ProblemsController < ApplicationController
     end
   end
 
+  def question
+    @problem = Problem.find(params[:id])
+  end
+
+  def answer
+    @problem = Problem.find(params[:id])
+  
+    if @problem.answer == params[:problem][:answer]
+      flash.now[:notice] = "当たり"
+    else
+      flash.now[:notice] = "はずれ"
+    end
+    
+    render 'question'
+  end
+
   private
 
     def problem_params
