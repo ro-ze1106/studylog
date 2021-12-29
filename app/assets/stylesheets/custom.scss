@@ -201,7 +201,7 @@ span.picture {
   font-size: 13px;
 }
 
-//// 料理個別ページ ////
+//// 問題個別ページ ////
 .problem-problem-title {
   display: inline-block;
 }
@@ -335,4 +335,9 @@ a.like, a.unlike {
 // 新しい通知があったときは黄文字にする
 li.new_notification > a > span {
   color: yellow;
+}
+
+//問題出題
+.problem-question {
+  font-weight: bold;
 }
