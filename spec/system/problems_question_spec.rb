@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe "ProblemsQuestion", type: :system do
-  let!(:user) { create(:user)}
+RSpec.describe 'ProblemsQuestion', type: :system do
+  let!(:user) { create(:user) }
   let!(:problem) { create(:problem, user: user) }
 
   describe '問題出題ページ' do

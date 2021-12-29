@@ -26,5 +26,4 @@ RSpec.describe Notification, type: :model do
     notification.from_user_id = nil
     expect(notification).not_to be_valid
   end
-
 end

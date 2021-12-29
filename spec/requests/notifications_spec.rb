@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "通知機能", type: :request do
+RSpec.describe '通知機能', type: :request do
   let!(:user) { create(:user) }
   let!(:other_user) { create(:user) }
   let!(:problem) { create(:problem, user: user) }
@@ -8,7 +8,7 @@ RSpec.describe "通知機能", type: :request do
 
   context '通知一覧ページの表示' do
     context 'ログインしているユーザーの場合' do
-      before do 
+      before do
         login_for_request(user)
       end
 
@@ -41,7 +41,8 @@ RSpec.describe "通知機能", type: :request do
       it 'コメントによって通知が作成されないこと' do
         post comments_path, params: { problem_id: problem.id,
                                       comment: {
-                                      content: "簡単!"}}
+                                        content: '簡単!'
+                                      } }
         expect(user.reload.notification).to be_falsey
       end
     end
@@ -55,7 +56,7 @@ RSpec.describe "通知機能", type: :request do
 
       it 'コメントによって通知が作成されること' do
         post comments_path, params: { problem_id: other_problem.id,
-                                      comment: { content: "簡単!"}}
+                                      comment: { content: '簡単!' } }
         expect(user.reload.notification).to be_falsey
         expect(other_user.reload.notification).to be_truthy
       end
