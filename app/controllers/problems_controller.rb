@@ -2,8 +2,7 @@ class ProblemsController < ApplicationController
   before_action :logged_in_user
   before_action :correct_user, only: %i[edit update]
 
-  def index
-  end
+  def index; end
 
   def show
     @problem = Problem.find(params[:id])
@@ -49,6 +48,22 @@ class ProblemsController < ApplicationController
       flash[:danger] = '別アカウントの問題は削除できません'
       redirect_to root_url
     end
+  end
+
+  def question
+    @problem = Problem.find(params[:id])
+  end
+
+  def answer
+    @problem = Problem.find(params[:id])
+
+    flash.now[:notice] = if @problem.answer == params[:problem][:answer]
+      '当たり'
+                         else
+      'はずれ'
+                         end
+
+    render 'question'
   end
 
   private

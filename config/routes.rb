@@ -13,6 +13,12 @@ Rails.application.routes.draw do
       get :following, :followers
     end
   end
+  resources :problems, only: [:question] do
+    member do
+      get 'question'
+      patch 'answer'
+    end
+  end
   resources :problems
   resources :relationships, only: [:create, :destroy]
   get :favorites, to: 'favorites#index'

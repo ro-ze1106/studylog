@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "problems_search", type: :system do
+RSpec.describe 'problems_search', type: :system do
   let!(:user) { create(:user) }
   let!(:other_user) { create(:user) }
   let!(:problem) { create(:problem, user: user) }
@@ -49,19 +49,19 @@ RSpec.describe "problems_search", type: :system do
         # 誰もフォローしない場合
         fill_in 'q_study_type_or_title_or_target_age_cont', with: '理科'
         click_button '検索'
-        expect(page).to have_css 'h3', text: "”理科”の検索結果：1件"
+        expect(page).to have_css 'h3', text: '”理科”の検索結果：1件'
         within find('.problems') do
           expect(page).to have_css 'li', count: 1
         end
         fill_in 'q_study_type_or_title_or_target_age_cont', with: '記号問題'
         click_button '検索'
-        expect(page).to have_css 'h3', text: "”記号問題”の検索結果：1件"
+        expect(page).to have_css 'h3', text: '”記号問題”の検索結果：1件'
         within find('.problems') do
           expect(page).to have_css 'li', count: 1
         end
         fill_in 'q_study_type_or_title_or_target_age_cont', with: '13'
         click_button '検索'
-        expect(page).to have_css 'h3', text: "”13”の検索結果：1件"
+        expect(page).to have_css 'h3', text: '”13”の検索結果：1件'
         within find('.problems') do
           expect(page).to have_css 'li', count: 1
         end
@@ -70,19 +70,19 @@ RSpec.describe "problems_search", type: :system do
         user.follow(other_user)
         fill_in 'q_study_type_or_title_or_target_age_cont', with: '理科'
         click_button '検索'
-        expect(page).to have_css 'h3', text: "”理科”の検索結果：2件"
+        expect(page).to have_css 'h3', text: '”理科”の検索結果：2件'
         within find('.problems') do
           expect(page).to have_css 'li', count: 2
         end
         fill_in 'q_study_type_or_title_or_target_age_cont', with: '記号問題'
         click_button '検索'
-        expect(page).to have_css 'h3', text: "”記号問題”の検索結果：2件"
+        expect(page).to have_css 'h3', text: '”記号問題”の検索結果：2件'
         within find('.problems') do
           expect(page).to have_css 'li', count: 2
         end
         fill_in 'q_study_type_or_title_or_target_age_cont', with: '13'
         click_button '検索'
-        expect(page).to have_css 'h3', text: "”13”の検索結果：2件"
+        expect(page).to have_css 'h3', text: '”13”の検索結果：2件'
         within find('.problems') do
           expect(page).to have_css 'li', count: 2
         end
@@ -91,7 +91,7 @@ RSpec.describe "problems_search", type: :system do
       it '検索ワードを入れずに検索ボタンを押した場合、問題一覧ページが用事されること' do
         fill_in 'q_study_type_or_title_or_target_age_cont', with: ''
         click_button '検索'
-        expect(page).to have_css 'h3', text: "問題一覧"
+        expect(page).to have_css 'h3', text: '問題一覧'
         within find('.problems') do
           expect(page).to have_css 'li', count: Problem.count
         end
