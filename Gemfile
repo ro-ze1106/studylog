@@ -21,7 +21,7 @@ gem 'will_paginate'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 gem 'ransack'
-
+gem 'sprockets', '~> 3.7.2'
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'bootstrap-sass'
 gem 'rexml'
