@@ -19,3 +19,10 @@ ActiveStorage.start()
 //= require activestorage
 //= require turbolinks
 // require_tree .
+
+window.jQuery = window.$ = require('../jquery.min')
+require('../jquery.easing.1.3')
+require('../bootstrap.min')
+require('../jquery.waypoints.min')
+require('../jquery.flexslider-min')
+require('../main')
