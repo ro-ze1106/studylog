@@ -1,42 +1,44 @@
 <% provide(:title, "#{@problem.title}") %>
 <% @comments = @problem.feed_comment(@problem.id) %>
-<div class="container">
-  <div class="row">
-    <div class="col-md-4">
-      <span class="picture">
-      <%= image_tag @problem.display_picture if @problem.picture.attached? %>
-      </span>
-      <%= render 'users/favorite_form' %>
-    </div>
-    <h2 class="problem-title"><%= @problem.title %></h2>
-    <div class="change-problem">
-      <% if current_user == @problem.user %>
-        <%= link_to "編集", edit_problem_path(@problem), class: 'edit-problem' %>
-      <% end %>
-      <% if current_user.admin? || (current_user == @problem.user) %>
-        <%= link_to "削除", problem_path(@problem), method: :delete, class: 'delete-problem',
-                       data: { confirm: "本当に削除しますか？" } %>
-      <% end %>
-    </div>
-    <h4>教科：<%= @problem.study_type %></h4>
-    <h4 class="problem-explanation_text">説明文：<%= @problem.explanation_text %></h4>
-    <h4 class="problem-problem_text">問題文：<%= @problem.problem_text %></h4>
-    <h4 class="problem-answer">答え：<%= @problem.answer %></h4>
-    <div class="problem_explanations">
-      <h5 class="title-problem_explanation">問題解説：</h5>
-      <h5><%= @problem.problem_explanation %></h5>
-    </div>
-    <div class="show-problem-other-info">
-      <div class="problem-info">
-        <h5>対象年齢(学年)：</h5><h4><%= @problem.target_age %></h4> <h5>才</h5>
+<div id="fh5co-portfolio">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <span class="picture">
+        <%= image_tag @problem.display_picture if @problem.picture.attached? %>
+        </span>
+        <%= render 'users/favorite_form' %>
       </div>
-      <div class="problem-info">
-        <h5>参考用URL：</h5><%= link_to "#{@problem.reference}", @problem.reference, target: "_blank" %></h4>
+      <h2 class="problem-title"><%= @problem.title %></h2>
+      <div class="change-problem">
+        <% if current_user == @problem.user %>
+          <%= link_to "編集", edit_problem_path(@problem), class: 'edit-problem' %>
+        <% end %>
+        <% if current_user.admin? || (current_user == @problem.user) %>
+          <%= link_to "削除", problem_path(@problem), method: :delete, class: 'delete-problem',
+                        data: { confirm: "本当に削除しますか？" } %>
+        <% end %>
       </div>
-    </div>
-    <div class ="comment">
-      <%= render "comments/feed_comments" %>
-      <%= render "comments/new" %>
+      <h4>教科：<%= @problem.study_type %></h4>
+      <h4 class="problem-explanation_text">説明文：<%= @problem.explanation_text %></h4>
+      <h4 class="problem-problem_text">問題文：<%= @problem.problem_text %></h4>
+      <h4 class="problem-answer">答え：<%= @problem.answer %></h4>
+      <div class="problem_explanations">
+        <h5 class="title-problem_explanation">問題解説：</h5>
+        <h5><%= @problem.problem_explanation %></h5>
+      </div>
+      <div class="show-problem-other-info">
+        <div class="problem-info">
+          <h5>対象年齢(学年)：</h5><h4><%= @problem.target_age %></h4> <h5>才</h5>
+        </div>
+        <div class="problem-info">
+          <h5>参考用URL：</h5><%= link_to "#{@problem.reference}", @problem.reference, target: "_blank" %></h4>
+        </div>
+      </div>
+      <div class ="comment">
+        <%= render "comments/feed_comments" %>
+        <%= render "comments/new" %>
+      </div>
     </div>
   </div>
 </div>
