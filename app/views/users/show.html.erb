@@ -1,31 +1,37 @@
 <% provide(:title, "プロフィール") %>
-<div class="container">
-  <h1>プロフィール<h1>
-  <div class="row">
-    <aside class="col-md-2">
-      <div class="user-picture-box">
-        <%= gravatar_for @user, size: 100 %>
-      </div>
-    </aside>
-    <div class="col-md-6">
-      <section class="user_name_info">
-        <%= @user.name %>
-      </section>
-      <section class="stats">
-        <%= render 'shared/stats' %>
-      </section>
-      <%= link_to "プロフィール編集", edit_user_path(@user) %>
-      <%= render 'follow_form' if logged_in? %>
-    </div>
-    <div class="row">
+<div id="fh5co-portfolio">
+  <div class="container">
+    <div class="row profile">
       <div class="col-md-9">
-        <% if @user.problems.any? %>
-          <h3>問題 (<%= @user.problems.count %>)</h3>
-          <ol class="problems">
-            <%= render @problems %>
-          </ol>
-          <%= will_paginate @problems %>
-        <% end %>
+        <h1>プロフィール<h1>
+        <div class="row">
+          <aside class="col-md-4">
+            <div class="user-picture-box">
+              <%= gravatar_for @user, size: 100 %>
+            </div>
+          </aside>
+          <div class="col-md-68">
+            <section class="user_name_info">
+              <%= @user.name %>
+            </section>
+            <section class="stats">
+              <%= render 'shared/stats' %>
+            </section>
+            <%= link_to "プロフィール編集", edit_user_path(@user) %>
+            <%= render 'follow_form' if logged_in? %>
+          </div>
+          <div class="row">
+            <div class="col-md-9">
+              <% if @user.problems.any? %>
+                <h3>問題 (<%= @user.problems.count %>)</h3>
+                <ol class="problems">
+                  <%= render @problems %>
+                </ol>
+                <%= will_paginate @problems %>
+              <% end %>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
