@@ -1,37 +1,50 @@
-<header class="navbar navbar-fixed-top">
- <div class="container">
-  <%= link_to "studylog", root_path, id: "logo"%>
-  <end>
-   <nav>
-     <ul class="nav navbar-nav navbar-right">
-       <li class="navitem"><%= link_to 'スタディログとは？', about_path, class: "navlink"%></li>
-       <% if logged_in? %>
-          <% if current_user.notification == true %>
-            <li class="new_notification header-link">
-          <% else %>
-            <li class="no_notification header-link">
-          <% end %>
-          <%= link_to notifications_path do %><span>通知</span><% end %>
-          </li>
-          <li><%= link_to 'お気に入り', favorites_path %></li>
-          <li><%= link_to "ユーザー一覧", users_path%></li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              アカウント <b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu">
-              <li><%= link_to "プロフィール", current_user %></li>
-              <li class="divider"></li>
-              <li>
-                <%= link_to "ログアウト", logout_path, method: :delete %>
+<nav class="fh5co-nav navbar-fixed-top" role="navigation">
+  <div class="top-menu">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-2">
+          <div id="fh5-logo">
+            <%= link_to root_path do %> <span>StudyLog</span><% end %>
+          </div>
+        </div>
+        <div class="col-xs-10 text-right menu-1">
+          <ul>
+            <% if logged_in? %>
+              <% if current_user.notification == true %>
+                <li class="new_notification header-link">
+              <% else %>
+                <li class="no_notification header-link">
+              <% end %>
+              <%= link_to notifications_path do %><span class="fas fa-bell"></span> <span>通知</span><% end %>
               </li>
-            </ul>
-          </li>
-        <% else %>
-          <li><%= link_to "ユーザー登録",  signup_path %></li>
-          <li><%= link_to "ログイン", login_path %></li>
-        <% end %>
-     </ul>
-   </nav>
- </div>
-</header>
+              <li class="header-link">
+              <%= link_to favorites_path do %><span class="fas fa-star"> <span>お気に入り</span><% end %>
+              </li>
+              <li class="has-dropdown">
+                <%= link_to current_user do %>
+                  <span class="fas fa-user-cog"></span>
+                <% end %>
+                <ul class="dropdown">
+                  <li><%= link_to 'プロフィール', current_user %></li>
+                  <li><%= link_to 'ユーザー一覧', users_path %></li>
+                  <li><%= link_to 'スタディログとは？', about_path %></li>
+                  <li><%= link_to 'ログアウト', logout_path, method: :delete %></li>
+                </ul>
+              </li>
+            <% else %>
+              <li class="header-link">
+                <%= link_to about_path do %><span class="fas fa-book"></span> <span>スタディログとは？</span><% end %>
+              </li>
+              <li class="header-link">
+                <%= link_to signup_path do %><span class="fas fa-user-plus"></span> <span>ユーザー登録(無料)</span><% end %>
+              </li>
+              <li class="header-link btn-cta">
+                <%= link_to login_path do %><span> ログイン</span><% end %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
