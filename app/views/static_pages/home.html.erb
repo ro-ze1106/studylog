@@ -1,6 +1,6 @@
 <% if logged_in? %>
-      <div class="container">
-    <div class="row">
+  <div id="fn5co-portfolio">
+    <div class="container">
       <div class="col-md-9">
         <h3>みんなの問題 (<%= @feed_items.count %>)</h3>
         <%= render 'shared/feed' %>
@@ -11,9 +11,24 @@
     </div>
   </div>
 <% else %>
-  <center>
-    <h1>スタディログへようこそ！</h1>
-    <h2>あなただけの問題集を作りませんか？</h2>
-    <p>勉強の復習をして自信を付けよう</p>
-  </center>
+  <header id="fh5co-header" class="fh5co-cover js-fullheight" role="banner">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="home">
+          <div class="col-md-8 col-md-offset-2 text-center">
+            <div class="display-t js-fullheight">
+              <div class="display-tc js-fullheight animate-box" data-animate-effect="fadeIn">
+                <h1>日々の勉強を<br>アウトプットして保存。</h1>
+                <h2>あなただけの問題集を作りませんか？</h2>
+                <p>
+                  <%= link_to "Let's study", signup_path, class: "btn btn-primary btn-lg btn-demo" %>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>    
 <% end %>
