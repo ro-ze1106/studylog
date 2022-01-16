@@ -6,15 +6,23 @@
     <%= render 'layouts/shim' %>
   </head>
   <body>
-    <%= render 'layouts/navigation' %>
-    <div class="container mt-4">
-      <% flash.each do |message_type, message| %>
-        <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
-      <% end %>
-      <%= render 'layouts/search' if logged_in? %>
+    <div class="fh5co-loader"></div>
+    <div id="page">
+      <%= render 'layouts/navigation' %>
+      <div id="fh5co-wireframe">
+        <div class="container">
+          <% flash.each do |message_type, message| %>
+            <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
+          <% end %>
+          <%= render 'layouts/search' if logged_in? %>
+        </div>
+      </div>
+      <%= yield %>
     </div>
-    <%= yield %>
     <%= render 'layouts/footer' %>
+    <div class="gototop js-top">
+      <a href="#" class="js-gotop"><i class="fas fa-arrow-up"></i></a>
+    </div>
     <%= render 'layouts/js' %>
   </body>
 </html>

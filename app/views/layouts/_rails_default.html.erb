@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="自分で作った問題を記録していくことができるサービスです。さらに記録した問題を出題させて解答形式で学習できます。友達間でフォローし合えば、友達が作成した問題を出題したり、問題をお気に入りに登録したり、コメントすることもできます。" />
-<meta name="keywords" content="スタディログ, 問題, 記録, SNS">
+<meta name="description" content="自分で作った料理を記録していくことができるサービスです。写真やメモと共に残しておけば、「今日何作ろう？」と迷ったときすぐ振り返れます。家族間でフォローし合えば、料理をお気に入りに登録したり、コメントしたり、食べたい料理にリクエストを送ることもできます。" />
+<meta name="keywords" content="スタディログ, 料理, 記録, SNS" />
 <link rel="shortcut icon" href="/images/favicon.ico">
 
 <!-- Facebook and Twitter integration -->
@@ -21,7 +21,8 @@
 
 <link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
 
-<%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-<%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+<%= stylesheet_link_tag    'application', media: 'all',
+                           'data-turbolinks-track': 'reload' %>
+<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
 <script src="https://kit.fontawesome.com/84eeecacff.js" crossorigin="anonymous"></script>
