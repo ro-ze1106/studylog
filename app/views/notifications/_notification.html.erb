@@ -12,13 +12,14 @@
     <% end %>
   </div>
   <div class="row">
-    <div class="col-md-2">
+    <div class="col-md-3">
       <%= image_tag problem.display_picture if problem.picture.attached? %>
     </div>
     <div class="col-md-7">
       <p><%= link_to problem.study_type, problem_path(problem) %></p>
       <p><%= problem.explanation_text %></p>
       <p><%= problem.problem_text %></p>
+      <span class="question"><%= link_to "問題出題", question_problem_path(problem) %></span>
     </div>
   </div>
 </li>
