@@ -9,7 +9,7 @@
       <p><%= link_to @problem.study_type, problem_path(@problem) %></p>
       <p><%= @problem.explanation_text %></p>
       <p><%= @problem.problem_text %></p>
-      <p class="problem-user">作成者 <%= link_to user.name, user_path(user) %></p>
+      <p class="study-user">作成者 <%= link_to user.name, user_path(user) %></p>
     </div>
   </div>
 </li>

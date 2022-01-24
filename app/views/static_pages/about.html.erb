@@ -1,2 +1,145 @@
 <% provide(:title, "スタディログとは？") %>
-<h1>スタディログとは？</h1>
+<div id="fh5co-about">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10">
+        <h1 class="title-about">スタディログとは？</h1>
+        <h4> 自分で作った問題を、記録して復習したり、出題して問題を解いたりできるサービスです。</h4>
+      </div>
+      <div class="col-md-10">
+        <h2 class="title-use">ご利用方法</h2>
+        <div>
+          <ol class="main-use">
+            <li class="A">自分用の問題ログとして使う</li>
+            <li class="B">友達同士での問題共有するサービスとして使う</li>
+          </ol>
+        </div>
+        <p class="about-line"></p>
+        <ol class="main-use">
+          <li class="A">自分用の問題ログとして使う</li>
+        </ol>
+        <div class="use-content">
+          <p>まずは勉強の復習のために、たくさんの問題を作成してみよう！</p>
+          <p>難しい問題を何度も見直したい場合は、</p>
+          <p>「お気に入り」に登録したり、</p>
+          <p>勉強したい教科を元に検索して探したりすることも出来ます。</p>
+        </div>
+        <ol class="how-to-use">
+          <li>新しい問題を写真や情報を追加</li>
+          <div class="use-explanation">
+            <div class="row">
+              <div class="col-md-4">
+                <p>(1)「問題作成」をクリックします。<p>
+                <%= image_tag("/images/問題作成ボタン.png", :alt => "useA-1-1", class: "use-picture") %>
+              </div>
+              <div class="col-md-4">
+              <p>(2)問題情報を入力します。</p>
+                <%= image_tag("/images/問題作成フォーム.png", :alt => "useA-1-2", class: "use-picture") %>
+              </div>
+              <div class="col-md-4">
+                <p>(3)問題の登録が完了しました!</p>
+                <%= image_tag("/images/問題個別ページ.png", :alt => "useA-1-3", class: "use-picture") %>              </div>
+              <div class="col-md-8">
+                <p>問題には下記の情報を登録することができます</p>
+                <p>・問題に関連する画像</p>
+                <p>・教科</p>
+                <p>・タイトル名</p>
+                <p>・説明文</p>
+                <p>・問題文</p>
+                <p>・答え</p>
+                <p>・問題解説</p>
+                <p>・対象年齢</p>
+                <p>・参考URL</p>
+              </div>
+            </div>
+          </div>
+          <li>作成した問題を出題する</li>
+          <div class="use-explanation">
+            <div class="row">
+              <div class="col-md-4">
+                <p>(1)問題出題をクリックする。</p>
+                <%= image_tag("/images/問題出題テキストリンク.png", :alt => "useA-2-1", class: "use-picture") %>              </div>
+                <div class="col-md-4">
+                <p>(2)答えを入力して、「答え合わせ」をクリックする。</p>
+                <%= image_tag("/images/答え合わせ.png", :alt => "useA-2-2", class: "use-picture") %>               
+                </div>
+                <div class="col-md-4">
+                <p>答えが正しければ「当たり」正しくなければ「はずれ」の文字が表示される。
+                <%= image_tag("/images/当たり.png", :alt => "useA-2-3", class: "use-picture") %>  
+                <%= image_tag("/images/はずれ.png", :alt => "useA-2-4", class: "use-picture") %>  
+                </div>
+              </div>
+            </div>
+            <li>作成した問題を「お気に入りに登録」</li>
+          <div class="use-explanation">
+            <div class="row">
+              <div class="col-md-4">
+                <p>(1)「お気に入りに登録する」をクリックする。</p>
+                <%= image_tag("/images/お気に入り登録.png", :alt => "useA-3-1", class: "use-picture") %>  
+              </div>
+              <div class="col-md-4">
+                <p>(2)ヘッダーメニューから「お気に入り」をクリックします。</p>
+                <%= image_tag("/images/お気に入り.png", :alt => "useA-3-2", class: "use-picture") %>  
+              </div>
+              <div class="col-md-4">
+                <p>(3)お気に入り登録済みの問題を見ることができます。</p>
+                <%= image_tag("/images/お気に入り個人ページ.png", :alt => "useA-3-3", class: "use-picture") %>  
+              </div>
+            </div>
+          </div>
+          <li>登録済みの問題を検索</li>
+          <div class="use-explanation">
+            <div class="row">
+              <div class="col-md-4">
+                <p>(1)検索バーを探します。</p>
+                <%= image_tag("/images/検索バー.png", :alt => "useA-4-1", class: "use-picture") %>  
+              </div>
+              <div class="col-md-4">
+                <p>(2)探したい問題に関するキーワード（例えば「算数」）を入力します。</p>
+                <%= image_tag("/images/検索バー「算数」.png", :alt => "useA-4-2", class: "use-picture") %>  
+              </div>
+              <div class="col-md-4">
+                <p>(3)教科、タイトル名、対象年齢に「算数」を含む問題の一覧が表示されます。</p>
+                <%= image_tag("/images/検索結果.png", :alt => "useA-4-3", class: "use-picture") %>  
+              </div>
+            </div>
+          </div>
+          </ol>
+        <ol class="main-use">
+          <li class="B">友達同士での問題共有するサービスとして使う</li>
+        </ol>
+        <div class="use-content">
+          <p> 例えば友達をフォローすれば、その友達が作成した問題を一覧で見ることができます。</p>
+          <p> 関心のある問題をお気に入りに登録したり、コメントしたり、出題したりできます。</p>
+        </div>
+        <ol class="how-to-use">
+          <li>問題にコメント(またはお気に入り登録)</li>
+          <div class="use-explanation">
+            <div class="row">
+              <div class="col-md-4">
+                <p>(1)問題ページへ飛び、コメントを入力します。</p>
+                <%= image_tag("/images/コメント入力.png", :alt => "useB-1-1", class: "use-picture") %>
+              </div>
+              <div class="col-md-4">
+                <p>(2)コメントが追加されました。</p>
+                <%= image_tag("/images/コメント追加.png", :alt => "useB-1-2", class: "use-picture") %>
+              </div>
+              <div class="col-md-4">
+                <p>コメント追加（またはお気に入り登録）すると、問題を作成した人の通知メニューが黄色くなり通知されます。
+                <%= image_tag("/images/通知の色が変化.png", :alt => "useB-1-1", class: "use-picture") %>
+              </div>
+              <div class="col-md-4">
+                <p>(4)問題を作成した人にお気に入り登録された事の通知が届きます。</p>
+                <%= image_tag("/images/通知一覧（お気に入り）.png", :alt => "useB-1-1", class: "use-picture") %>
+              </div>
+              <div class="col-md-4">
+                <p>(5)問題を作成した人にコメントされた事の通知が届きます。</p>
+                <%= image_tag("/images/通知一覧（コメント）.png", :alt => "useB-1-1", class: "use-picture") %>
+              </div>
+            </div>
+          </div>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div
