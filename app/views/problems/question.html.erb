@@ -1,16 +1,18 @@
 <% provide(:title, "問題") %>
-<div class="container">
-  <h1>問題</h1>
-  <div class="row">
-    <%= form_with model: @problem, url: {controller: 'problems', action: 'answer'} do |f| %>
-      <%= f.hidden_field :id %>
-      <h4 class="problem-question">
-      <div><%= @problem.study_type %></div><br>
-      <div><%= @problem.explanation_text %></div><br>
-      <div><%= @problem.problem_text %></div><br>
-      <%= f.label :answer %><%= f.text_field :answer, value: "", id: 'problem_answer' %></h4>
-      <%= f.submit "答え合わせ", class: "btn btn-primary" %>
-      <%= link_to "みんなの問題へ", problems_path%>
-    <% end %>
+<div id="fh5co-portfolio">
+  <div class="container">
+    <h1 class="title-profile">問題</h1>
+    <div class="row">
+      <%= form_with model: @problem, url: {controller: 'problems', action: 'answer'} do |f| %>
+        <%= f.hidden_field :id %>
+        <h4 class="problem-question">
+        <div><%= @problem.study_type %></div><br>
+        <div><%= @problem.explanation_text %></div><br>
+        <div><%= @problem.problem_text %></div><br>
+        <%= f.label :answer %><%= f.text_field :answer, value: "", id: 'problem_answer' %></h4>
+        <%= f.submit "答え合わせ", class: "btn btn-primary" %>
+        <%= link_to "みんなの問題へ", problems_path%>
+      <% end %>
+    </div>
   </div>
 </div>

@@ -1,93 +1,82 @@
-@import "bootstrap-sprockets";
-@import "bootstrap";
-
 @mixin box_sizing {
   -moz-box-sizing:    border-box;
   -webkit-box-sizing: border-box;
   box-sizing:         border-box;
 }
 
-/* universal */
-
-body {
-  padding-top: 60px;
+//// ヘッダー ////
+.menu-1 a:hover {
+  text-decoration: none;
+  text-decoration-width: 1px;
 }
 
-section {
-  overflow: auto;
+.nabvar-brand {
+  font-size: 20px;
+  font-weight: bolder;
 }
 
-textarea {
-  resize: vertical;
+// 上下幅
+.fh5co-nav .top-menu {
+  padding: 15px 0;
 }
 
-.center {
-  text-align: center;
-}
-
-.center h1 {
-  margin-bottom: 10px;
-}
-
-// テキストの見栄え
-h1, h2, h3, h4, h5, h6 {
-  line-height: 1;
-}
-
-h1 {
-  font-size: 3em;
-  letter-spacing: -2px;
-  margin-bottom: 30px;
-  text-align: center;
-}
-
-h2 {
-  font-size: 1.2em;
-  letter-spacing: -1px;
-  margin-bottom: 30px;
-  text-align: center;
-  font-weight: normal;
-  color: #777 ;
-}
-
-p {
-  font-size: 1.1em;
-  line-height: 1.7em;
-}
-
-// ヘッダー
- header{
-   background-color: #00ff;   
- }
-
- #logo {
-  float: left;
-  margin-right: 10px;
-  font-size: 1.7em;
-  color: #fff;
-  text-transform: uppercase;
-  letter-spacing: -1px;
-  padding-top: 9px;
-  font-weight: bold;
-  &:hover {
-    color: #fff;
-    text-decoration: none;
+#logo {
+  img {
+    max-width: 100%;
+    height: auto;
+    box-sizing: border-box;
   }
 }
 
-.navlink{
-  color: #fff;
+// スマホ用：ヘッダーメニューが横棒三本になるところを境にロゴを拡大
+@media screen and (max-width: 768px) {
+  #logo {
+    img {
+      max-width: 400%;
+      height: auto;
+      box-sizing: border-box;
+    }
+  }
 }
 
-// フッター
-footer {
-  margin-top: 45px;
-  padding-top: 5px;
-  border-top: 1px solid #eaeaea ;
-  color: #777 ;
-  small {
-    float: center;
+// スマホ閲覧時、横棒三本をページ上部に固定
+.fh5co-nav-toggle {
+  position: fixed;
+}
+
+// ロゴの上下位置調整
+.fh5co-nav #fh5co-logo {
+  font-size: 0px;
+}
+
+//// ページボディ部 ////
+#fh5co-about {
+  padding: 0;
+}
+
+#fh5co-wireframe {
+  padding-top: 7em;
+  padding-bottom: 0;
+}
+
+#fh5co-portfolio {
+  padding: 0;
+  h1 {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 30px;
   }
+  h3 {
+    text-align: left;
+  }
+}
+
+//// フッター ////
+#fh5co-footer {
+  margin-top: 3em;
+  padding: 1em 0;
+  bottom: 0;
+  border-top: 1px solid #eaeaea;
 }
 
 /* forms */
@@ -112,9 +101,9 @@ input {
 }
 
 .field_with_errors {
-  @extend .has-error;
+  @extend .has-error !optional;
   .form-control {
-    color: $state-danger-text;
+    color: red;
   }
 }
 
@@ -140,7 +129,7 @@ input {
   li {
     overflow: auto;
     padding: 10px 0;
-    border-bottom: 1px solid $gray-lighter;
+    border-bottom: 1px solid gray;
   }
 }
 
@@ -165,7 +154,7 @@ input {
     }
   }
   .timestamp {
-    color: $gray-light;
+    color: gray;
     display: block;
     margin-left: 60px;
   }
@@ -289,6 +278,34 @@ h2.problem-title {
   color: grey;
 }
 
+.problem-picture {
+  max-width: 100%;
+	height: auto;
+  box-sizing: border-box;
+}
+
+// 問題一覧
+.problem-user {
+  text-align: right;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.title {
+  margin-top: 7px;
+  margin-bottom: 7px;
+}
+
+.problem_text {
+  margin-top: 7px;
+  margin-bottom: 7px;
+}
+
+.reference {
+  margin-top: 7px;
+  margin-bottom: 7px;
+}
+
 // フォロー、フォロワー数表示部
 .stats {
   margin: 5px 0;
@@ -340,4 +357,31 @@ li.new_notification > a > span {
 //問題出題
 .problem-question {
   font-weight: bold;
+}
+
+//プロフィール
+.title-profile {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.show-user-name {
+  display: inline-block;
+  padding-bottom: 10px;
+}
+
+.account-edit {
+  margin-top: 20px;
+}
+
+.account-delete {
+  margin-top: 20px;
+}
+
+//問題作成ボタン
+.btn-record {
+  margin-top: 3em;
+  color: black;
+  background-color: yellow;
+  border-color: yellow;
 }

@@ -2,7 +2,7 @@
 <% user = @problem.user %>
 <li id="favorite-<%= favorite.id %>">
   <div class="row favorite-problem">
-    <div class="col-md-2">
+    <div class="col-md-3">
     <%= image_tag @problem.display_picture if @problem.picture.attached? %>
     </div>
     <div class="col-md-7">
