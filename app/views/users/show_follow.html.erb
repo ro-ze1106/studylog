@@ -26,8 +26,7 @@
           <ul class="users follow">
             <%= render @users %>
           </ul>
-          <%= will_paginate %>
-        <% end %>
+          <%= will_paginate @rank, previous_label: '&#8592; &nbsp;前', next_label: '次 &#8594;', inner_window: 1, outer_window: 0 %>        <% end %>
       </div>
     </div>
   </div>

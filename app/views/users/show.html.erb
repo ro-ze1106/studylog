@@ -32,8 +32,7 @@
             <ol class="problems">
               <%= render @problems %>
             </ol>
-            <%= will_paginate @problems %>
-          <% end %>
+            <%= will_paginate @problems, previous_label: '&#8592; &nbsp;前', next_label: '次 &#8594;', inner_window: 1, outer_window: 0 %>          <% end %>
         </div>
       </div>
     </div>

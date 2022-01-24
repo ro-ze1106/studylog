@@ -6,39 +6,39 @@
         <%= form_for(@problem) do |f| %>
           <%= render 'shared/error_messages', object: f.object %>
           <span class="picture">
-            <%= f.label :picture %>　<span class="input-unneed">※任意</span>
+            <%= f.label :picture %>　<span class="input-unneed">　※任意</span>
             <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png', class: 'form-control', id: 'problem_picture' %>
           </span>
           <div class = 'form-group'>
-            <%= f.label :study_type %><span class="input-need">※必須</span>
+            <%= f.label :study_type %><span class="input-need">　※必須</span>
             <%= f.text_field :study_type, class: 'form-control', id: 'problem_study_type' %>
           </div>
           <div class = 'form-group'>
-            <%= f.label :title %><span class="input-need">※必須</span>
+            <%= f.label :title %><span class="input-need">　※必須</span>
             <%= f.text_field :title, class: 'form-control', id: 'problem_title' %>
           </div>
           <div class = 'form-group'>
-            <%= f.label :explanation_text %><span class="input-unneed">※任意</span>
+            <%= f.label :explanation_text %><span class="input-unneed">　※任意</span>
             <%= f.text_field :explanation_text, class: 'form-control', id: 'problem_explanation_text' %>
           </div>
           <div class = 'form-group'>
-          <%= f.label :problem_text %><span class="input-need">※必須</span>
+          <%= f.label :problem_text %><span class="input-need">　※必須</span>
           <%= f.text_field :problem_text, class: 'form-control', id: 'problem_problem_text' %>
         </div>
         <div class = 'form-group'>
-          <%= f.label :answer %><span class="input-need">※必須</span>
+          <%= f.label :answer %><span class="input-need">　※必須</span>
           <%= f.text_field :answer, class: 'form-control', id: 'problem_answer' %>
         </div>
         <div class = 'form-group'>
-            <%= f.label :problem_explanation %><span class="input-unneed">※任意</span>
+            <%= f.label :problem_explanation %><span class="input-unneed">　※任意</span>
             <%= f.text_field :problem_explanation, class: 'form-control', id: 'problem_problem_explanation' %>
           </div>
           <div class = 'form-group'>
-            <%= f.label :target_age %><span class="input-unneed">※任意</span>
+            <%= f.label :target_age %> [7~18才]<span class="input-need">　※必須</span>
             <%= f.text_field :target_age, class: 'form-control', id: 'problem_target_age' %>
           </div>
           <div class = 'form-group'>
-            <%= f.label :reference %><span class="input-unneed">※任意</span>
+            <%= f.label :reference %><span class="input-unneed">　※任意</span>
             <%= f.text_field :reference, class: 'form-control', id: 'problem_reference' %>
           </div>
           <%= f.submit "更新する", class: "btn btn-primary" %>

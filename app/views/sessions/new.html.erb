@@ -16,10 +16,10 @@
         <div class = 'form-group'>
           <%= f.label :remember_me, class: "checkbox inline" do %>
             <%= f.check_box :remember_me %>
-            <span>ログインしたままにする</span>
+            <span>自動ログインにする</span>
           <% end %>
         </div>
-        <%= f.submit 'ログイン', class: 'btn btn-primary' %>
+        <%= f.submit 'ログインする', class: 'btn btn-primary' %>
       <% end %>
       <br>ユーザー登録されていない方は<%= link_to 'こちら', signup_path %><br>
     </div>

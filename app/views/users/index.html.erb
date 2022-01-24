@@ -2,10 +2,9 @@
 <div id="fh5co-portfolio">
   <div class="container">
     <h1>ユーザー一覧</h1>
-    <%= will_paginate %>
+      <%= will_paginate @rank, previous_label: '&#8592; &nbsp;前', next_label: '次 &#8594;', inner_window: 1, outer_window: 0 %>
     <ul class="users">
       <%= render @users %>
     </ul>
-    <%= will_paginate %>
   </div>
 </div>
