@@ -11,7 +11,7 @@
         <div><%= @problem.problem_text %></div><br>
         <%= f.label :answer %><%= f.text_field :answer, value: "", id: 'problem_answer' %></h4>
         <%= f.submit "答え合わせ", class: "btn btn-primary" %>
-        <%= link_to "みんなの問題へ", problems_path%>
+        <%= link_to "みんなの問題へ", root_path%>
       <% end %>
     </div>
   </div>
