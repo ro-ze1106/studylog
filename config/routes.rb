@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     member do
       get 'question'
       patch 'answer'
+      get 'answer', to: redirect('/')
     end
   end
   resources :problems
