@@ -32,12 +32,12 @@ RSpec.describe 'コメント機能', type: :request do
     end
 
     context 'ログインしていない場合' do
-      it 'コメントは登録できず、ログインページへリダイレクトすること' do
+      it 'コメントは登録できず、採用担当者ログインページへリダイレクトすること' do
         expect {
           post comments_path, params: { problem_id: problem.id,
                                         comment: { content: '簡単です' } }
         }.not_to change(problem.comments, :count)
-        expect(response).to redirect_to login_path
+        expect(response).to redirect_to recruit_login_path
       end
     end
   end

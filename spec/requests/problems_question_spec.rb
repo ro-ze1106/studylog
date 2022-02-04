@@ -14,10 +14,10 @@ RSpec.describe '問題出題', type: :request do
   end
 
   context 'ログインされていないユーザーの場合' do
-    it 'ログイン画面にリダイレクトされること' do
+    it '採用担当者ログイン画面にリダイレクトされること' do
     get question_problem_path(problem)
     expect(response).to have_http_status '302'
-    expect(response).to redirect_to login_path
+    expect(response).to redirect_to recruit_login_path
     end
   end
 end

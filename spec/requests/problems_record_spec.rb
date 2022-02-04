@@ -51,10 +51,10 @@ RSpec.describe '問題登録', type: :request do
   end
 
   context 'ログインしていないユーザーの場合' do
-    it 'ログイン画面にリダイレクトされること' do
+    it '採用担当者ログイン画面にリダイレクトされること' do
       get new_problem_path
       expect(response).to have_http_status '302'
-      expect(response).to redirect_to login_path
+      expect(response).to redirect_to recruit_login_path
     end
   end
 end

@@ -14,10 +14,10 @@ RSpec.describe 'ユーザー一覧', type: :request do
   end
 
   context 'ログインされていないユーザーの場合' do
-    it 'ログインページにリダイレクトすること' do
+    it '採用担当者ログインページにリダイレクトすること' do
       get users_path
       expect(response).to have_http_status '302'
-      expect(response).to redirect_to login_url
+      expect(response).to redirect_to recruit_login_path
     end
 
     it 'admin属性の変更が禁止されていること' do
