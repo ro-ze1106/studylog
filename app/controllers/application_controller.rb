@@ -13,12 +13,12 @@ class ApplicationController < ActionController::Base
 
   private
 
-    # ログイン済みユーザーかどうか確認
+    # ログイン済みユーザーかどうか確認(採用担当者様ログイン用)
     def logged_in_user
       unless logged_in?
         store_location
         flash[:danger] = 'ログインしてください'
-        redirect_to login_url
+        redirect_to recruit_login_url
       end
     end
 end

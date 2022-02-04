@@ -33,10 +33,10 @@
           <p>こちらは作成した問題一覧です。</p>
           <p>機能につきましてはログイン願います。</P>
           <p>（専用ログインをご用意しています。）</p>
-          <h3 class='title-profile'>問題一覧 (<%= @problems.count %>)</h3>
+          <h3>問題一覧 (<%= @problems.count %>)</h3>
           <div class="col-md-14 text-left">
             <% @problems.each do |problem| %>
-              <div class='title-profile'>
+              <div class='top-separation'>
                 <%= render 'problems/problem', problem: problem %>
               </div>
             <% end %>

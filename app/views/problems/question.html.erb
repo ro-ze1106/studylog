@@ -9,9 +9,10 @@
         <div><%= @problem.study_type %></div><br>
         <div><%= @problem.explanation_text %></div><br>
         <div><%= @problem.problem_text %></div><br>
-        <%= f.label :answer %><%= f.text_field :answer, value: "", id: 'problem_answer' %></h4>
+        <%= f.label :answer %><%= f.text_field :answer, value: "", id: 'problem_answer', class: 'form-control' %></h4>
         <%= f.submit "答え合わせ", class: "btn btn-primary" %>
-        <%= link_to "みんなの問題へ", root_path%>
+        <%= link_to "みんなの問題へ", root_path%><br>
+        <%= link_to '問題の答えへ', problem_path(@problem) %>
       <% end %>
     </div>
   </div>
