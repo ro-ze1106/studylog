@@ -552,3 +552,34 @@ img.use-picture {
   box-sizing: border-box;
   margin-bottom: 30px;
 }
+
+//トップページ
+.top-picture {
+  max-width: auto;
+  height: auto;
+  box-sizing: border-box;
+  margin-bottom: 30px;
+}
+
+.about_first {
+  font-size: 5ex;
+  font-weight: bold;
+}
+
+.top-title {
+  color: blue;
+  font-family: cursive;
+}
+
+.login-color:hover {
+  opacity: 0.9;
+}
+
+.top-about {
+  padding: 0.5em;
+  background: #fef6f3;
+}
+
+::marker {
+  color: white;
+}

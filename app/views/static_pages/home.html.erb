@@ -12,24 +12,37 @@
     </div>
   </div>
 <% else %>
-<header id="fh5co-header" class="fh5co-cover js-fullheight" role="banner">
-    <div class="overlay"></div>
+<%= stylesheet_link_tag    'custom', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <div id="fn5co-portfolio">
     <div class="container">
       <div class="row">
-        <div class="home">
-          <div class="col-md-8 col-md-offset-3 text-center">
-            <div class="display-t js-fullheight">
-              <div class="display-tc js-fullheight animate-box" data-animate-effect="fadeIn">
-                <h1>日々の勉強を<br>アウトプットして保存。</h1>
-                <h2>あなただけの問題集を作りませんか？</h2>
-                <p>
-                  <%= link_to "Let's study", signup_path, class: "btn btn-primary btn-lg btn-demo" %>
-                </p>
+        <div class="col-md-8 col-md-offset-3 text-center">
+          <h3>学習の楽しみ方をお手伝いします!</h3>
+          <h1 class= top-title>Let&apos;s study</h1>
+          <%= image_tag("/images/本.png", :alt => "top_page", class: "use-picture") %>
+          <div class="top-about">
+            <h1 >StudyLogとは</h1>
+            <p>　自分で作った問題を記録して復習したり、出題し問題を解いたりできるサービスです。</p><br>
+          </div><br>
+          <%= link_to "初めて使う方へ", about_path, class: "about_first" %>
+          <p>こちらから使用方法がご確認できます。</p><br>
+          <div class="login-color">
+            <%= link_to "お試しログイン", recruit_login_path, class: "btn btn-primary btn-lg btn-demo" %><br>
+          </div>
+          <p class="about-line"></p>
+          <p>こちらは作成した問題一覧です。</p>
+          <p>機能につきましてはログイン願います。</P>
+          <p>（専用ログインをご用意しています。）</p>
+          <h3 class='title-profile'>問題一覧 (<%= @problems.count %>)</h3>
+          <div class="col-md-14 text-left">
+            <% @problems.each do |problem| %>
+              <div class='title-profile'>
+                <%= render 'problems/problem', problem: problem %>
               </div>
-            </div>
+            <% end %>
           </div>
         </div>
       </div>
     </div>
-  </header>    
+  </div>
 <% end %> 
