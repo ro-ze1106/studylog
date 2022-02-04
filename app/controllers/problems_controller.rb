@@ -2,8 +2,7 @@ class ProblemsController < ApplicationController
   before_action :logged_in_user
   before_action :correct_user, only: %i[edit update]
 
-  def index; 
-  end
+  def index; end
 
   def show
     @problem = Problem.find(params[:id])
@@ -58,13 +57,13 @@ class ProblemsController < ApplicationController
   def answer
     @problem = Problem.find(params[:id])
 
-    flash.now[:notice] = if @problem.answer == params[:problem][:answer]
-      '当たり'
-                         else
-      'はずれ'
-                         end
-
-    render 'question'
+    if @problem.answer == params[:problem][:answer]
+      flash[:success] = '当たり'
+      redirect_to root_url
+    else
+      flash.now[:danger] = 'はずれ'
+      render 'question'
+    end
   end
 
   private

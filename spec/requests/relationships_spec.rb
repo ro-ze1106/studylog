@@ -39,30 +39,30 @@ RSpec.describe 'ユーザーフォロー機能', type: :request do
   end
 
   context 'ログインしていない場合' do
-    it 'followingページへ飛ぶとログインページにリダイレクトされること' do
+    it 'followingページへ飛ぶと採用担当者ログインページにリダイレクトされること' do
       get following_user_path(user)
       expect(response).to have_http_status '302'
-      expect(response).to redirect_to login_path
+      expect(response).to redirect_to recruit_login_path
     end
 
-    it 'followersページへ飛ぶとログインページにリダイレクトされること' do
+    it 'followersページへ飛ぶと採用担当者ログインページにリダイレクトされること' do
       get followers_user_path(user)
       expect(response).to have_http_status '302'
-      expect(response).to redirect_to login_path
+      expect(response).to redirect_to recruit_login_path
     end
 
-    it 'createアクションは実行できず、ログインページにリダイレクトすること' do
+    it 'createアクションは実行できず、採用担当者ログインページにリダイレクトすること' do
       expect {
         post relationships_path
       }.not_to change(Relationship, :count)
-    expect(response).to redirect_to login_path
+    expect(response).to redirect_to recruit_login_path
     end
 
-    it 'destroyアクションは実行できず、ログインページにリダイレクトすること' do
+    it 'destroyアクションは実行できず、採用担当者ログインページにリダイレクトすること' do
       expect {
         delete relationship_path(user)
       }.not_to change(Relationship, :count)
-    expect(response).to redirect_to login_path
+    expect(response).to redirect_to recruit_login_path
     end
   end
 end

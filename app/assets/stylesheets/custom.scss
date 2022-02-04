@@ -552,3 +552,60 @@ img.use-picture {
   box-sizing: border-box;
   margin-bottom: 30px;
 }
+
+//トップページ
+.top-picture {
+  max-width: auto;
+  height: auto;
+  box-sizing: border-box;
+  margin-bottom: 30px;
+}
+
+.about_first {
+  font-size: 5ex;
+  font-weight: bold;
+}
+
+.top-title {
+  color: blue;
+  font-family: cursive;
+}
+
+.login-color:hover {
+  opacity: 0.9;
+}
+
+.top-about {
+  padding: 0.5em;
+  background: #fef6f3;
+}
+
+::marker {
+  color: white;
+}
+.top-separation {
+  padding-bottom: 10px;
+  border-top: 1px solid #eaeaea;
+}
+
+//// トップページ（ログイン前） ////
+.recruit-login {
+  background-color: lightyellow;
+  margin-bottom: 30px;
+  padding: 20px;
+  border: solid 3px #000000;
+}
+
+.title-form {
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.description-form {
+  margin-bottom: 20px;
+}
+
+.recruit-account {
+  margin-top: 20px;
+}

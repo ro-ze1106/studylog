@@ -18,7 +18,7 @@ RSpec.describe 'お気に入り登録機能', type: :request do
       it 'ログイン画面にリダイレクトされること' do
         get favorites_path
         expect(response).to have_http_status '302'
-        expect(response).to redirect_to login_path
+        expect(response).to redirect_to recruit_login_path
       end
     end
   end
@@ -57,18 +57,18 @@ RSpec.describe 'お気に入り登録機能', type: :request do
     end
 
     context 'ログインしていない場合' do
-      it 'お気に入り登録は実行できず、ログインページへリダイレクトすること' do
+      it 'お気に入り登録は実行できず、採用担当者ログインページへリダイレクトすること' do
         expect {
           post "/favorites/#{problem.id}/create"
         }.not_to change(Favorite, :count)
-      expect(response).to redirect_to login_path
+      expect(response).to redirect_to recruit_login_path
       end
 
-      it 'お気に入り解除は実行できず、ログインページへリダイレクトすること' do
+      it 'お気に入り解除は実行できず、採用担当者ログインページへリダイレクトすること' do
         expect {
           delete "/favorites/#{problem.id}/destroy"
         }.not_to change(Favorite, :count)
-        expect(response).to redirect_to login_path
+        expect(response).to redirect_to recruit_login_path
       end
     end
   end

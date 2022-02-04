@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'sessions/new'
+  get 'sessions/index'
   get 'users/new'
   root 'static_pages#home'
   get :about,        to: 'static_pages#about'
@@ -8,6 +9,7 @@ Rails.application.routes.draw do
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
+  get '/recruit_login', to: 'sessions#index'
   resources :users do
     member do
       get :following, :followers
@@ -17,6 +19,7 @@ Rails.application.routes.draw do
     member do
       get 'question'
       patch 'answer'
+      get 'answer', to: redirect('/')
     end
   end
   resources :problems

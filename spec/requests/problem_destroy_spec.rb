@@ -29,12 +29,12 @@ RSpec.describe '問題の削除', type: :request do
   end
 
   context 'ログインしていない場合' do
-    it 'ログインページにリダイレクトされること' do
+    it '採用担当者ログインページにリダイレクトされること' do
       expect {
         delete problem_path(problem)
       }.not_to change(Problem, :count)
       expect(response).to have_http_status '302'
-      expect(response).to redirect_to login_path
+      expect(response).to redirect_to recruit_login_path
     end
   end
 end
