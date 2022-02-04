@@ -2,8 +2,7 @@ class ProblemsController < ApplicationController
   before_action :logged_in_user
   before_action :correct_user, only: %i[edit update]
 
-  def index; 
-  end
+  def index; end
 
   def show
     @problem = Problem.find(params[:id])
@@ -65,9 +64,7 @@ class ProblemsController < ApplicationController
       flash.now[:danger] = 'はずれ'
       render 'question'
     end
-
   end
-
 
   private
 

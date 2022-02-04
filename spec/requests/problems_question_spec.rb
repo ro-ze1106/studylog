@@ -25,7 +25,7 @@ RSpec.describe '問題出題', type: :request do
     it 'ホームページにリダイレクトされること' do
       login_for_request(user)
       get question_problem_path(problem)
-      patch answer_problem_path(problem), params: { problem: { answer: 94} }
+      patch answer_problem_path(problem), params: { problem: { answer: 94 } }
       expect(response).to redirect_to root_path
     end
   end
@@ -34,7 +34,7 @@ RSpec.describe '問題出題', type: :request do
     it 'レスポンスが正常に表示されること' do
       login_for_request(user)
       get question_problem_path(problem)
-      patch answer_problem_path(problem), params: { problem: { answer: 0} }
+      patch answer_problem_path(problem), params: { problem: { answer: 0 } }
       expect(response).to render_template('problems/question')
     end
   end
@@ -43,8 +43,8 @@ RSpec.describe '問題出題', type: :request do
     it 'ホームページにリダイレクトされること' do
       login_for_request(user)
       get question_problem_path(problem)
-      patch answer_problem_path(problem), params: { problem: { answer: 0} }
-      patch answer_problem_path(problem), params: { problem: { answer: 0} }
+      patch answer_problem_path(problem), params: { problem: { answer: 0 } }
+      patch answer_problem_path(problem), params: { problem: { answer: 0 } }
       get answer_problem_path(problem)
       expect(response).to redirect_to root_path
     end
