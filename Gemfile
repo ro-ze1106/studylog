@@ -25,13 +25,14 @@ gem 'ransack'
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'bootstrap-sass'
 gem 'rexml'
+gem 'mysql2', '0.5.3'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails'
   gem 'rails-controller-testing'
   gem 'rspec-rails'
-  gem 'sqlite3'
+  # gem 'sqlite3'
 end
 
 group :development do
@@ -47,10 +48,6 @@ group :test do
   gem 'capybara', '>= 3.26'
   gem 'selenium-webdriver'
   gem 'webdrivers'
-end
-
-group :production do
-  gem 'pg'
 end
 
 gem 'devise'
