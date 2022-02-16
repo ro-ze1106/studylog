@@ -11,8 +11,7 @@ default: &default
   username: tomo
   password: 002003tomo
   host: localhost
-  socket: /tmp/mysql.sock
-
+ 
 development:
   <<: *default
   database: studylog_development
@@ -26,6 +25,8 @@ test:
 
 production:
   <<: *default
-  database: studylog_production
-  username: studylog
-  password: <%= ENV['STUDYLOG_DATABASE_PASSWORD'] %>
+  database: <%= ENV['MYSQL_DATABASE'] %>
+  url: <%= ENV['MYSQL_URL'] %>
+  username: <%= ENV['MYSQL_USERNAME'] %>
+  password: <%= ENV['MYSQL_PASSWORD'] %>
+  host: <%= ENV['MYSQL_HOST'] %>
