@@ -6,7 +6,7 @@
 #
 default: &default
   adapter: mysql2
-  encoding: utf8
+  encoding: utf8mb4
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: tomo
   password: 002003tomo
@@ -25,8 +25,13 @@ test:
 
 production:
   <<: *default
-  database: <%= ENV['MYSQL_DATABASE'] %>
-  url: <%= ENV['MYSQL_URL'] %>
-  username: <%= ENV['MYSQL_USERNAME'] %>
-  password: <%= ENV['MYSQL_PASSWORD'] %>
-  host: <%= ENV['MYSQL_HOST'] %>
+  database: study_production
+  adapter: mysql2
+  encoding: utf8mb4
+  charset: utf8mb4
+  collation: utf8mb4_general_ci
+  username: <%= Rails.application.credentials.db[:user_name] %>
+  password: <%= Rails.application.credentials.db[:password] %>
+  host: <%= Rails.application.credentials.db[:endpoint] %>
+  pool: 20
+  timeout: 1000
