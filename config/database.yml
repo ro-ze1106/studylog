@@ -24,8 +24,7 @@ test:
   database: studylog_test
 
 production:
-  <<: *default
-  database: study_production
+  database: studylog_production
   adapter: mysql2
   encoding: utf8mb4
   charset: utf8mb4
