@@ -215,8 +215,6 @@ RSpec.describe 'user', type: :system do
 
       it 'お気に入りによって通知がされること' do
         find('.like').click
-        visit problem_path(other_user)
-        expect(page).to have_css 'li.no_notification'
         logout
         login_for_system(other_user)
         expect(page).to have_css 'li.new_notification'
