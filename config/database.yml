@@ -26,13 +26,12 @@ test:
 
 production:
   <<: *default
-  database: studylog_production
   adapter: mysql2
   encoding: utf8mb4
-  charset: utf8mb4
-  collation: utf8mb4_general_ci
-  username: <%= Rails.application.credentials.db[:user_name] %>
-  password: <%= Rails.application.credentials.db[:password] %>
-  host: <%= Rails.application.credentials.db[:endpoint] %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS", "5" ) %>
+  host: <%= ENV.fetch("DATABASE_HOST", "localhost" ) %>
+  username: <%= ENV.fetch("DATABASE_USER") %>
+  password: <%= ENV.fetch("DATABASE_PASSWORD") %>
+  database: <%= ENV.fetch("DATABASE_NAME", "my_project") %>
   pool: 20
   timeout: 1000
