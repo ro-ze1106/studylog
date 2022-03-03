@@ -6,12 +6,29 @@ services:
     command: ash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     volumes:
       - .:/studylog
+      - public-data:/studylog/public
     ports:
       - "3000:3000"
     env_file:
       - .env
     depends_on:
       - db 
+    environment:
+      WEBPACKER_DEV_SERVER_HOST: webpacker
+
+  webpacker:
+    build: .
+    container_name: webpacker
+    volumes:
+      - .:/studylog
+      - /studylog/node_modules
+      - public-data:/studylog/public
+    command: ./bin/webpacker-dev-server
+    environment:
+      WEBPACKER_DEV_SERVER_HOST: 0.0.0.0
+    ports:
+      - "3035:3035"
+
   db:
     image: mysql:8.0.28
     container_name: db
@@ -22,5 +39,10 @@ services:
       - "3306:3306"
     volumes:
       - db:/var/lib/mysql
+
 volumes:
   db:
+    driver: local
+  bundle:
+    driver: local
+  public-data:
