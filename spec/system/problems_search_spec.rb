@@ -88,12 +88,12 @@ RSpec.describe 'problems_search', type: :system do
         end
       end
 
-      it '検索ワードを入れずに検索ボタンを押した場合、問題一覧ページが用事されること' do
+      it '検索ワードを入れずに検索ボタンを押した場合、問題一覧ページが表示されること' do
         fill_in 'q_study_type_or_title_or_target_age_cont', with: ''
         click_button '検索'
         expect(page).to have_css 'h3', text: '問題一覧'
         within find('.problems') do
-          expect(page).to have_css 'li', count: Problem.count
+          expect(page).to have_css 'li', count: @problem
         end
       end
     end
