@@ -93,10 +93,10 @@ RSpec.describe 'Problems', type: :system do
         within find('.change-problem') do
           click_on '削除'
         end
-        expect{
-          expect(page.accept_confirm).to eq "本当に削除しますか？"
-          expect(page).to have_content "問題が削除されました"
-          }
+        expect {
+          expect(page.accept_confirm).to eq '本当に削除しますか？'
+          expect(page).to have_content '問題が削除されました'
+        }
       end
     end
   end
@@ -163,9 +163,9 @@ RSpec.describe 'Problems', type: :system do
       context '問題の削除処理', js: true do
         it '削除成功のフラッシュが表示されること' do
           click_on '削除'
-          expect{
-            expect(page.accept_confirm).to eq "本当に削除しますか？"
-            expect(page).to have_content "問題が削除されました"
+          expect {
+            expect(page.accept_confirm).to eq '本当に削除しますか？'
+            expect(page).to have_content '問題が削除されました'
           }
         end
       end

@@ -41,10 +41,10 @@ RSpec.describe 'StaticPages', type: :system do
         it '問題削除後、削除成功のフラッシュが表示されること' do
           visit root_path
           click_on '削除'
-          expect{
-            expect(page.accept_confirm).to eq "本当に削除しますか？"
-            expect(page).to have_content "問題が削除されました"
-            }
+          expect {
+            expect(page.accept_confirm).to eq '本当に削除しますか？'
+            expect(page).to have_content '問題が削除されました'
+          }
         end
       end
     end

@@ -41,9 +41,9 @@ RSpec.describe 'users_index', type: :system do
         login_for_system(user)
         visit users_path
         click_link '削除する'
-        expect{
-        expect(page.accept_confirm).to eq "本当に削除しますか？"
-        expect(page).to have_content "自分のアカウントを削除しました"
+        expect {
+        expect(page.accept_confirm).to eq '本当に削除しますか？'
+        expect(page).to have_content '自分のアカウントを削除しました'
         }
       end
     end
