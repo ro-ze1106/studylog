@@ -40,10 +40,11 @@ RSpec.describe 'users_index', type: :system do
       it 'ユーザー一覧から削除できること' do
         login_for_system(user)
         visit users_path
-        page.accept_confirm do
-          click_link '削除する'
-        end
+        click_link '削除する'
+        expect {
+        expect(page.accept_confirm).to eq '本当に削除しますか？'
         expect(page).to have_content '自分のアカウントを削除しました'
+        }
       end
     end
 end

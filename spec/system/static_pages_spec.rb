@@ -38,11 +38,13 @@ RSpec.describe 'StaticPages', type: :system do
           expect(page).to have_link '問題作成', href: new_problem_path
         end
 
-        it '問題削除後、問題成功フラッシュが表示されること' do
+        it '問題削除後、削除成功のフラッシュが表示されること' do
           visit root_path
           click_on '削除'
-          page.driver.browser.switch_to.alert.accept
-          expect(page).to have_content '問題が削除されました'
+          expect {
+            expect(page.accept_confirm).to eq '本当に削除しますか？'
+            expect(page).to have_content '問題が削除されました'
+          }
         end
       end
     end

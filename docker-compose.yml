@@ -1,0 +1,64 @@
+version: "3.9"
+services:
+  rails:
+    build: .
+    container_name: rails
+    command: bundle exec puma -C config/puma.rb
+    volumes:
+      - .:/studylog
+      - public-data:/studylog/public
+      - tmp-data:/studylog/tmp
+      - log-data:/studylog/log
+      - /studylog/node_modules
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+    depends_on:
+      - db
+    environment:
+      WEBPACKER_DEV_SERVER_HOST: webpacker
+
+  webpacker:
+    build: .
+    volumes:
+      - .:/studylog
+      - /studylog/node_modules
+      - public-data:/studylog/public
+    command: ./bin/webpack-dev-server
+    environment:
+      WEBPACKER_DEV_SERVER_HOST: 0.0.0.0
+    ports:
+      - "3035:3035"
+    user: root
+
+  db:
+    image: mysql:8.0.28
+    container_name: db
+    environment:
+      TZ: Asia/Tokyo
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "3306:3306"
+    volumes:
+      - db:/val/lib/mysql
+
+  web:
+    build:
+      context: containers/nginx
+    volumes:
+      - public-data:/studylog/public
+      - tmp-data:/studylog/tmp
+    ports:
+      - 80:80
+    depends_on:
+      - rails
+
+volumes:
+  db:
+    driver: local
+  bundle:
+    driver: local
+  public-data:
+  tmp-data:
+  log-data:
