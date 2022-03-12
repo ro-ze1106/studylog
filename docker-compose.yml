@@ -3,31 +3,34 @@ services:
   rails:
     build: .
     container_name: rails
-    command: ash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    command: bundle exec puma -C config/puma.rb
     volumes:
       - .:/studylog
       - public-data:/studylog/public
+      - tmp-data:/studylog/tmp
+      - log-data:/studylog/log
+      - /studylog/node_modules
     ports:
       - "3000:3000"
     env_file:
       - .env
     depends_on:
-      - db 
+      - db
     environment:
       WEBPACKER_DEV_SERVER_HOST: webpacker
 
   webpacker:
     build: .
-    container_name: webpacker
     volumes:
       - .:/studylog
       - /studylog/node_modules
       - public-data:/studylog/public
-    command: ./bin/webpacker-dev-server
+    command: ./bin/webpack-dev-server
     environment:
       WEBPACKER_DEV_SERVER_HOST: 0.0.0.0
     ports:
       - "3035:3035"
+    user: root
 
   db:
     image: mysql:8.0.28
@@ -38,7 +41,18 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - db:/var/lib/mysql
+      - db:/val/lib/mysql
+
+  web:
+    build:
+      context: containers/nginx
+    volumes:
+      - public-data:/studylog/public
+      - tmp-data:/studylog/tmp
+    ports:
+      - 80:80
+    depends_on:
+      - rails
 
 volumes:
   db:
@@ -46,3 +60,5 @@ volumes:
   bundle:
     driver: local
   public-data:
+  tmp-data:
+  log-data:
