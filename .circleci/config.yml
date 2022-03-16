@@ -23,7 +23,7 @@ jobs:
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "Gemfile.lock" }}
-            - v1=dependencies-
+            - v1-dependencies-
 
       - run:
           name: install dependencies
@@ -35,7 +35,9 @@ jobs:
           paths:
             - ./vendor/bundle
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
-      - run: mv config/database.yml.ci config/database.yml 
+
+      - run: mv config/database.yml.ci config/database.yml
+      
       - run: bundle exec rails db:create
       - run: bundle exec rails db:schema:load
 
