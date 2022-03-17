@@ -42,22 +42,22 @@ jobs:
       - run: bundle exec rails db:schema:load
 
       - run:
-        name: Rubocop
-        command: bundle exec rubocop  
+          name: Rubocop
+          command: bundle exec rubocop
 
       - run:
-        name: Rspec
-        command: |
-          mkdir /tmp/test-results \
-          TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | \
-            circleci tests split --split-by=timings)"
-          bundle exec rspec \
-            --format progress \
-            --format RspecJunitFormatter \
-            --out /tmp/test-results/rspec.xml \
-            --format progress \
-            $TEST_FILES 
-
+          name: Rspec
+          command: |
+            mkdir /tmp/test-results \
+            TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | \
+              circleci tests split --split-by=timings)"
+            bundle exec rspec \
+              --format progress \
+              --format RspecJunitFormatter \
+              --out /tmp/test-results/rspec.xml \
+              --format progress \
+              $TEST_FILES
+              
       # collect reports
       - store_test_results:
           path: /tmp/test-results
