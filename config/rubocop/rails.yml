@@ -1,27 +1,34 @@
 Rails:
   Enabled: true
 
+# Delegateが使われていないかチェック
 Rails/Delegate:
   Enabled: false
 
+# Exitがないかチェック
 Rails/Exit:
   Enabled: false
 
+ # ファイルパスのチェック
 Rails/FilePath:
   Enabled: false
 
+# 数字の文法チェック
 Rails/PluralizationGrammar:
   Enabled: false
 
+# 視覚的に見やすいコードなのかチェック
 Rails/Present:
   Enabled: false
 
+# try!を&.にすることでより簡潔に書ける
 Rails/SafeNavigation:
   ConvertTry: true
 
 # Rails/SaveBang:
 #   Enabled: true
 
+# 環境が存在することをチェック
 Rails/UnknownEnv:
   Environments:
     - development # rubocop default.yml
@@ -29,11 +36,14 @@ Rails/UnknownEnv:
     - production # rubocop default.yml
     - staging
 
+# 検証をスキップするメソッドの使用をチェック
 Rails/SkipsModelValidations:
   Enabled: false
 
+# ヘルパーメソッドの使用をチェック
 Rails/HelperInstanceVariable:
   Enabled: false
 
+# スコープやオプションが正しく使用されているかチェック
 Rails/InverseOf:
   Enabled: false
