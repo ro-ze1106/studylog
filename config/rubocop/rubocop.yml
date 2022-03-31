@@ -1,3 +1,4 @@
+# 対象外のファイル
 AllCops:
   Exclude:
     - 'bin/**'
@@ -6,62 +7,82 @@ AllCops:
     - 'vendor/**/**/*'
     - 'spec/*'
 
+# 文字列リテラルがデフォルトでfreezeされる
 Style/FrozenStringLiteralComment:
   Enabled: false
 
+# ドキュメント無いpublic classを許可する
 Style/Documentation:
   Enabled: false
 
+# クラス内にクラスが定義されていないかチェックする
 Style/ClassAndModuleChildren:
   Enabled: false
 
+# 配列やハッシュの末尾のカンマの有無をチェック
 Style/TrailingCommaInHashLiteral:
   Enabled: false
 
+# 複数行のブロックは見苦しいから
 Style/BlockDelimiters:
   Enabled: false
 
+# :: 演算子の代わりに呼び出されたメソッドをチェック
 Style/ColonMethodCall:
   Enabled: false
 
+# prependステートメントがクラスおよびモジュール内に表示される
 Style/MixinUsage:
   Enabled: false
 
+# ある定数値が可変リテラル（配列やハッシュなど）ではないかどうかをチェック
 Style/MutableConstant:
   Enabled: false
 
+# 日本語のコメント許可
 Style/AsciiComments:
   Enabled: false
 
+# 条件式内でコードをラップする代わりに、ガード句を使用
 Style/GuardClause:
   Enabled: false
 
+# ハッシュの最初の要素の前に改行をチェック
 Layout/FirstHashElementLineBreak:
   Enabled: false
 
+#  一貫性のないインデントをチェック
 Layout/IndentationConsistency:
   Enabled: false
 
+# 指定された数のスペースを使用しないインデントをチェック
 Layout/IndentationWidth:
   Enabled: false
 
+# コメント内の英語以外の言語チェック
 Metrics/LineLength:
   Max: 160
 
+# ブロックの長さチェック
 Metrics/BlockLength:
   Max: 250
 
+# RuboCop特有の点数チェック
 Metrics/AbcSize:
   Max: 45
 
+# メソッドの長さチェック
 Metrics/MethodLength:
   Max: 60
 
+# クラスの長さチェック
 Metrics/ClassLength:
   Max: 120
 
+# メソッドのインデントチェック
 Metrics/CyclomaticComplexity:
   Max: 15
 
+# メソッドの見やすさチェック
 Metrics/PerceivedComplexity:
   Max: 15 
