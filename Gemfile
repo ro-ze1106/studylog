@@ -25,6 +25,7 @@ gem 'ransack'
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'bootstrap-sass'
 gem 'dotenv-rails'
+gem 'listen', '~> 3.3'
 gem 'mysql2', '0.5.3'
 gem 'rexml'
 
@@ -38,7 +39,6 @@ group :development, :test do
 end
 
 group :development do
-  gem 'listen', '~> 3.3'
   gem 'rack-mini-profiler', '~> 2.0'
   gem 'rubocop', require: false
   gem 'rubocop-rails', require: false
