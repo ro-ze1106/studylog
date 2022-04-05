@@ -27,6 +27,7 @@ gem 'bootstrap-sass'
 gem 'dotenv-rails'
 gem 'mysql2', '0.5.3'
 gem 'rexml'
+gem 'listen', '~> 3.3'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
@@ -38,7 +39,6 @@ group :development, :test do
 end
 
 group :development do
-  gem 'listen', '~> 3.3'
   gem 'rack-mini-profiler', '~> 2.0'
   gem 'rubocop', require: false
   gem 'rubocop-rails', require: false
