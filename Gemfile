@@ -25,9 +25,9 @@ gem 'ransack'
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'bootstrap-sass'
 gem 'dotenv-rails'
+gem 'listen', '~> 3.3'
 gem 'mysql2', '0.5.3'
 gem 'rexml'
-gem 'listen', '~> 3.3'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
