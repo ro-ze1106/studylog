@@ -15,14 +15,8 @@ Rails.application.routes.draw do
       get :following, :followers
     end
   end
-  resources :problems, only: [:question] do
-    member do
-      get 'question'
-      patch 'answer'
-      get 'answer', to: redirect('/')
-    end
-  end
   resources :problems
+  resources :questions
   resources :relationships, only: [:create, :destroy]
   get :favorites, to: 'favorites#index'
   post "favorites/:problem_id/create" => "favorites#create"

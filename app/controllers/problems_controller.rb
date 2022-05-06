@@ -50,22 +50,6 @@ class ProblemsController < ApplicationController
     end
   end
 
-  def question
-    @problem = Problem.find(params[:id])
-  end
-
-  def answer
-    @problem = Problem.find(params[:id])
-
-    if @problem.answer == params[:problem][:answer]
-      flash[:success] = '当たり'
-      redirect_to root_url
-    else
-      flash.now[:danger] = 'はずれ'
-      render 'question'
-    end
-  end
-
   private
 
     def problem_params
