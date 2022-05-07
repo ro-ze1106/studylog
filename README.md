@@ -53,5 +53,4 @@ https://app.studylog-tomo.com
 ![Untitled Diagram](https://user-images.githubusercontent.com/85288297/165872708-c3f2292a-ea61-446a-845c-85aeb2181a7c.png)
 
 # ER図
-
-![ER図(studylog)](https://user-images.githubusercontent.com/85288297/165872215-2d966ea1-f26b-437d-859d-9afb77fef585.png)
+![ER図(studylog)](https://user-images.githubusercontent.com/85288297/167237715-d0000fb0-5bb0-49ad-8138-9b3e22fc4895.png)
