@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Questions", type: :system do
+RSpec.describe 'Questions', type: :system do
   let!(:user) { create(:user) }
   let!(:problem) { create(:problem, user: user) }
 

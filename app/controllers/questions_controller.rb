@@ -1,5 +1,4 @@
 class QuestionsController < ApplicationController
-  before_action :logged_in_user, only: %i[destroy]
   def show
     @problem = Problem.find(params[:id])
   end
