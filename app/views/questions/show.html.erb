@@ -3,7 +3,7 @@
   <div class="container">
     <h1 class="title-profile">問題</h1>
     <div class="row">
-      <%= form_with model: @problem, url: {controller: 'problems', action: 'answer'} do |f| %>
+      <%= form_with model: @problem, url: {controller: 'questions', action: 'update'} do |f| %>
         <%= f.hidden_field :id %>
         <h4 class="problem-question">
         <div><%= @problem.study_type %></div><br>

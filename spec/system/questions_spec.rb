@@ -1,13 +1,13 @@
 require 'rails_helper'
 
-RSpec.describe 'ProblemsQuestion', type: :system do
+RSpec.describe 'Questions', type: :system do
   let!(:user) { create(:user) }
   let!(:problem) { create(:problem, user: user) }
 
   describe '問題出題ページ' do
     before do
       login_for_system(user)
-      visit question_problem_path(problem)
+      visit question_path(problem)
     end
 
     context 'レイアウトページ' do
